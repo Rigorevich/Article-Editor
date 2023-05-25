@@ -1,0 +1,23 @@
+.text {
+  font-size: 24px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #333;
+}
+
+.text-normal {
+  font-weight: 400;
+}
+
+.text-bold {
+  font-weight: 600;
+}
+
+.text-italic {
+  font-style: italic;
+}
+
+.text-heading {
+  font-size: 36px;
+  font-weight: 600;
+}

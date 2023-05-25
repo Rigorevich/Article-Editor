@@ -1,10 +1,11 @@
 import React from "react";
 import Container from "./components/Container";
+import Text from "./components/Text";
 
 function App() {
   return (
     <Container>
-      <div>Something</div>
+      <Text variant="heading" text="Something" />
     </Container>
   );
 }
