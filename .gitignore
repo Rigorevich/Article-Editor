@@ -1,0 +1,24 @@
+# Файлы сборки
+/build
+/dist
+
+# Зависимости
+/node_modules
+
+# Файлы окружения
+.env
+
+# Интерфейсные файлы TypeScript
+*.js
+*.js.map
+*.d.ts
+
+# Логи и временные файлы
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+
+# IDE
+.vscode
+.idea
