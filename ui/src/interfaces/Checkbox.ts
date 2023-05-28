@@ -1,7 +1,11 @@
 type CheckboxType = "checkbox";
 
-export interface ICheckbox {
-  type: CheckboxType;
+export interface CheckboxData {
   option: string;
   checked: boolean;
+}
+
+export interface Checkbox {
+  type: CheckboxType;
+  data: CheckboxData;
 }

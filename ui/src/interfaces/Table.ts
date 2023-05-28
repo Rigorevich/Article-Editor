@@ -1,8 +1,11 @@
-import { IText } from "./Text";
+import { Text } from "./Text";
 
 type TableType = "table";
 
-export interface ITable {
+export type TableData = Array<Array<Text>>;
+
+export interface Table {
   type: TableType;
-  columns: Array<IText>;
+  colsCount: number;
+  data: TableData;
 }

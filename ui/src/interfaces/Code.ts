@@ -1,6 +1,10 @@
 type CodeType = "code";
 
-export interface ICode {
-  type: CodeType;
+export interface CodeData {
   content: string;
+}
+
+export interface Code {
+  type: CodeType;
+  data: CodeData;
 }
