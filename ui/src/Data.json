@@ -27,12 +27,6 @@
         "caption": "Подпись к картинке"
       },
       {
-        "type": "image",
-        "alignment": "left",
-        "source": "http://example.com/image2.jpg",
-        "caption": "Подпись к второй картинке"
-      },
-      {
         "type": "text",
         "content": "Ещё текст"
       },

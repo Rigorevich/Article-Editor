@@ -1,17 +1,17 @@
 import React from "react";
 import styled from "./Image.module.css";
+import classNames from "classnames";
+import { IImage } from "../../interfaces/Image";
+import { imageAlignment } from "../../utils/image-alignment";
 
-type ImageProps = {
-  type: string;
-  url: string;
-  alignment: string;
-  caption: string;
-};
-
-const Image: React.FC<ImageProps> = ({ type, url, alignment, caption }) => {
+const Image: React.FC<IImage> = ({ source, alignment, caption }) => {
   return (
     <div className={styled.wrapper}>
-      <img className={styled.image} src={url} alt={caption} />
+      <img
+        className={classNames(styled.image, styled[imageAlignment(alignment)])}
+        src={source}
+        alt={caption}
+      />
     </div>
   );
 };

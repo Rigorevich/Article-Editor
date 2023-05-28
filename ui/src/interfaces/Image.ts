@@ -1,5 +1,5 @@
-type ImageType = "image";
-type Alignment = "center" | "left" | "right";
+export type ImageType = "image";
+export type Alignment = "center" | "left" | "right";
 
 export interface IImage {
   type: ImageType;

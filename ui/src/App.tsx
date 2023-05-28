@@ -1,34 +1,26 @@
 import React from "react";
 import Container from "./components/Container";
-import Text from "./components/Text";
-import Code from "./components/Code";
-import Data from "./Data.json";
+import Image from "./components/Image";
+import data from "./data.json";
+
+import { IImage } from "./interfaces/Image";
 
 function App() {
-  const code = `
-  import React from "react";
-  import styled from "./Container.module.css";
-  import classNames from "classnames";
-
-  function App() {
-    return (
-      <Container>
-        <Text variant="heading" text="Something" />
-        <Code code={code} language="typescript" />
-      </Container>
-    );
-  }
-  
-  export default App;
-  `;
+  const image: IImage = {
+    type: "image",
+    alignment: "center",
+    source: "https://www.imgonline.com.ua/examples/bee-on-daisy.jpg",
+    caption: "Подпись к картинке",
+  };
 
   return (
     <Container>
-      <Text variant="heading" text="Something" />
-      <Code code={code} language="typescript" />
-      {Data.articles.map((article) => (
-        <li>{JSON.stringify(article)}</li>
-      ))}
+      <Image {...image} />
+      <div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse nisi odio
+        repudiandae, aliquid minus non facilis modi vel aspernatur! Quidem,
+        natus voluptas ex itaque maiores sit illo obcaecati! Perspiciatis, quas!
+      </div>
     </Container>
   );
 }
