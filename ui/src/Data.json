@@ -1,0 +1,81 @@
+{
+  "articles": [
+    [
+      {
+        "type": "heading",
+        "level": 3,
+        "content": "Заголовок статьи"
+      },
+      {
+        "type": "text",
+        "content": "Обычный текст статьи"
+      },
+      {
+        "type": "text",
+        "style": ["bold", "italic"],
+        "content": "Жирный текст"
+      },
+      {
+        "type": "text",
+        "style": ["italic"],
+        "content": "Курсивный текст"
+      },
+      {
+        "type": "image",
+        "alignment": "center",
+        "source": "http://example.com/image.jpg",
+        "caption": "Подпись к картинке"
+      },
+      {
+        "type": "image",
+        "alignment": "left",
+        "source": "http://example.com/image2.jpg",
+        "caption": "Подпись к второй картинке"
+      },
+      {
+        "type": "text",
+        "content": "Ещё текст"
+      },
+      {
+        "type": "table",
+        "content": [
+          [
+            {
+              "type": "text",
+              "content": "Ячейка 1"
+            },
+            {
+              "type": "text",
+              "content": "Ячейка 2"
+            }
+          ],
+          [
+            {
+              "type": "text",
+              "content": "Ячейка 3",
+              "style": ["bold", "italic"]
+            },
+            {
+              "type": "text",
+              "content": "Ячейка 4"
+            }
+          ]
+        ]
+      },
+      {
+        "type": "code",
+        "content": "function helloWorld() {\n  console.log('Hello, World!');\n}"
+      },
+      {
+        "type": "checkbox",
+        "option": "Вариант 1",
+        "checked": true
+      },
+      {
+        "type": "checkbox",
+        "option": "Вариант 2",
+        "checked": false
+      }
+    ]
+  ]
+}
