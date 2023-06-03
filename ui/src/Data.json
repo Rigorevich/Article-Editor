@@ -17,7 +17,7 @@
       "type": "paragraph",
       "data": [
         {
-          "text": "Здесь большое "
+          "text": "Здесь жирное "
         },
         {
           "text": "описание",
@@ -27,33 +27,39 @@
     },
     {
       "type": "image",
-      "data": [
-        {
-          "url": "https://example.com/image1.jpg",
-          "alignment": "left",
-          "caption": "Картинка 1"
-        },
-        {
-          "url": "https://example.com/image.jpg",
-          "alignment": "center",
-          "caption": "Картинка 2"
-        }
-      ]
+      "data": {
+        "source": "https://example.com/image1.jpg",
+        "alignment": "left",
+        "caption": "Картинка 1"
+      }
     },
     {
       "type": "code",
+      "language": "javascript",
+      "data": {
+        "code": "function helloWorld() {\n  console.log('Hello, World!');\n}"
+      }
+    },
+    {
+      "type": "checkbox",
       "data": [
         {
-          "code": "function helloWorld() {\n  console.log('Hello, World!');\n}"
-        },
-        {
-          "code": "function helloWorld() {\n  console.log('Hello, World!');\n}"
+          "option": "Что-то",
+          "checked": true
         }
       ]
     },
     {
       "type": "table",
-      "data": []
+      "colsCount": 3,
+      "data": [
+        [
+          {
+            "text": "Ячейка 1"
+          }
+        ],
+        [{ "text": "Ячейка 2", "marks": ["bold"] }]
+      ]
     }
   ]
 ]

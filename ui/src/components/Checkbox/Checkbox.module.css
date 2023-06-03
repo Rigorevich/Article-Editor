@@ -1,0 +1,9 @@
+.box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.box input {
+  margin-right: 0.5rem;
+}

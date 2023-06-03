@@ -7,5 +7,5 @@ export interface CheckboxData {
 
 export interface Checkbox {
   type: CheckboxType;
-  data: CheckboxData;
+  data: Array<CheckboxData>;
 }

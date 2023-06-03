@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "./Image.module.css";
 import classNames from "classnames";
-import { IImage } from "../../interfaces/Image";
+import { Image as ImageProps } from "../../interfaces/Image";
 import { imageAlignment } from "../../utils/image-alignment";
 
-const Image: React.FC<IImage> = ({ source, alignment, caption }) => {
+const Image: React.FC<ImageProps> = (props) => {
+  const { source, caption, alignment } = props.data;
   return (
     <div className={styled.wrapper}>
       <img

@@ -1,17 +1,13 @@
 import React from "react";
 import styled from "./Code.module.css";
+import { Code as CodeProps } from "../../interfaces/Code";
 
-type CodeProps = {
-  code: string;
-  language: string;
-};
-
-const Code: React.FC<CodeProps> = ({ code, language }) => {
+const Code: React.FC<CodeProps> = ({ data, language }) => {
   return (
     <div className={styled.wrapper}>
       <div className={styled.language}>{language}</div>
       <pre className={styled.code}>
-        <code>{code}</code>
+        <code>{data.code}</code>
       </pre>
     </div>
   );
