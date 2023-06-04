@@ -1,11 +1,11 @@
-type CheckboxType = "checkbox";
+import { Text } from "./Text";
 
 export interface CheckboxData {
-  option: string;
+  option: Text;
   checked: boolean;
 }
 
 export interface Checkbox {
-  type: CheckboxType;
-  data: Array<CheckboxData>;
+  type: "checkbox";
+  data: CheckboxData[];
 }

@@ -1,4 +1,3 @@
-export type ImageType = "image";
 export type Alignment = "center" | "left" | "right";
 
 export interface ImageData {
@@ -8,6 +7,6 @@ export interface ImageData {
 }
 
 export interface Image {
-  type: ImageType;
+  type: "image";
   data: ImageData;
 }

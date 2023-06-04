@@ -1,11 +1,9 @@
-type CodeType = "code";
-
 export interface CodeData {
   code: string;
 }
 
 export interface Code {
-  type: CodeType;
+  type: "code";
   language: string;
   data: CodeData;
 }

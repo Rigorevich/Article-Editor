@@ -2,7 +2,7 @@
   [
     {
       "type": "heading",
-      "level": "1",
+      "level": 1,
       "data": [
         {
           "text": "Заголовок ",
@@ -12,6 +12,14 @@
           "text": "статьи 1"
         }
       ]
+    },
+    {
+      "type": "image",
+      "data": {
+        "source": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
+        "alignment": "left",
+        "caption": "Картинка 1"
+      }
     },
     {
       "type": "paragraph",
@@ -26,14 +34,6 @@
       ]
     },
     {
-      "type": "image",
-      "data": {
-        "source": "https://example.com/image1.jpg",
-        "alignment": "left",
-        "caption": "Картинка 1"
-      }
-    },
-    {
       "type": "code",
       "language": "javascript",
       "data": {
@@ -44,21 +44,56 @@
       "type": "checkbox",
       "data": [
         {
-          "option": "Что-то",
+          "option": {
+            "text": "Ячейка 1",
+            "marks": ["bold"]
+          },
+          "checked": true
+        },
+        {
+          "option": {
+            "text": "Ячейка 2",
+            "marks": ["bold", "italic"]
+          },
+          "checked": true
+        },
+        {
+          "option": {
+            "text": "Ячейка 3",
+            "marks": ["italic"]
+          },
           "checked": true
         }
       ]
     },
     {
       "type": "table",
-      "colsCount": 3,
+      "tableName": "Моя таблица",
       "data": [
-        [
-          {
-            "text": "Ячейка 1"
-          }
-        ],
-        [{ "text": "Ячейка 2", "marks": ["bold"] }]
+        {
+          "type": "row",
+          "cols": [
+            {
+              "text": "Заголовок 1"
+            },
+            {
+              "text": "Заголовок 2",
+              "marks": ["bold"]
+            }
+          ]
+        },
+        {
+          "type": "row",
+          "cols": [
+            {
+              "text": "Заголовок 1.1"
+            },
+            {
+              "text": "Заголовок 2.1",
+              "marks": ["bold"]
+            }
+          ]
+        }
       ]
     }
   ]
