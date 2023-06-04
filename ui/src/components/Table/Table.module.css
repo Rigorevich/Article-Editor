@@ -1,0 +1,24 @@
+.wrapper {
+  margin-top: 0.75rem;
+}
+
+.table_name {
+  margin-bottom: 0.5rem;
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+}
+
+.table_row {
+  display: flex;
+}
+
+.table_cell {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+}
