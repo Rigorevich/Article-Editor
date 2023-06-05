@@ -1,100 +1,141 @@
 [
-  [
-    {
-      "type": "heading",
-      "level": 1,
-      "data": [
-        {
-          "text": "Заголовок ",
-          "marks": ["italic"]
-        },
-        {
-          "text": "статьи 1"
-        }
-      ]
-    },
-    {
-      "type": "image",
-      "data": {
-        "source": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
-        "alignment": "left",
-        "caption": "Картинка 1"
-      }
-    },
-    {
-      "type": "paragraph",
-      "data": [
-        {
-          "text": "Здесь жирное "
-        },
-        {
-          "text": "описание",
-          "marks": ["bold"]
-        }
-      ]
-    },
-    {
-      "type": "code",
-      "language": "javascript",
-      "data": {
-        "code": "function helloWorld() {\n  console.log('Hello, World!');\n}"
-      }
-    },
-    {
-      "type": "checkbox",
-      "data": [
-        {
-          "option": {
-            "text": "Ячейка 1",
-            "marks": ["bold"]
+  {
+    "type": "article",
+    "data": { "title": "Статья №1" },
+    "nodes": [
+      {
+        "type": "heading",
+        "data": { "level": 3 },
+        "nodes": [
+          {
+            "type": "text",
+            "text": "Заголовок"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "nodes": [
+          {
+            "type": "text",
+            "data": { "text": "Здесь " }
           },
-          "checked": true
-        },
-        {
-          "option": {
-            "text": "Ячейка 2",
-            "marks": ["bold", "italic"]
+          {
+            "type": "text",
+            "data": { "text": "жирный", "marks": ["bold"] }
           },
-          "checked": true
-        },
-        {
-          "option": {
-            "text": "Ячейка 3",
-            "marks": ["italic"]
+          {
+            "type": "text",
+            "data": { "text": " текст и картинка " }
           },
-          "checked": true
+          {
+            "type": "image",
+            "data": { "alignment": "left", "src": "url", "alt": "alt" }
+          }
+        ]
+      },
+      {
+        "type": "code",
+        "data": {
+          "language": "javascript",
+          "code": "function helloWorld() {\n  console.log('Hello, World!');\n}"
         }
-      ]
-    },
-    {
-      "type": "table",
-      "tableName": "Моя таблица",
-      "data": [
-        {
-          "type": "row",
-          "cols": [
-            {
-              "text": "Заголовок 1"
-            },
-            {
-              "text": "Заголовок 2",
-              "marks": ["bold"]
+      },
+      {
+        "type": "checkbox",
+        "nodes": [
+          {
+            "type": "option",
+            "data": {
+              "option": "Ячейка 1",
+              "checked": true
             }
-          ]
-        },
-        {
-          "type": "row",
-          "cols": [
-            {
-              "text": "Заголовок 1.1"
-            },
-            {
-              "text": "Заголовок 2.1",
-              "marks": ["bold"]
+          },
+          {
+            "type": "option",
+            "data": {
+              "option": "Ячейка 2",
+              "checked": false
             }
-          ]
-        }
-      ]
-    }
-  ]
+          }
+        ]
+      },
+      {
+        "type": "table",
+        "data": {
+          "tableName": "Название таблицы"
+        },
+        "nodes": [
+          {
+            "type": "row",
+            "nodes": [
+              {
+                "type": "col",
+                "nodes": [
+                  {
+                    "type": "text",
+                    "data": {
+                      "text": "Ячейка "
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "data": {
+                      "text": "1",
+                      "marks": ["bold"]
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "col",
+                "nodes": [
+                  {
+                    "type": "text",
+                    "data": {
+                      "text": "Тут тоже что-то"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "row",
+            "nodes": [
+              {
+                "type": "col",
+                "nodes": [
+                  {
+                    "type": "text",
+                    "data": {
+                      "text": "Ячейка "
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "data": {
+                      "text": "1",
+                      "marks": ["bold"]
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "col",
+                "nodes": [
+                  {
+                    "type": "text",
+                    "data": {
+                      "text": "Тут тоже что-то"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 ]
