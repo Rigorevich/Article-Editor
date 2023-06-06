@@ -1,9 +1,8 @@
+import { GenericNode } from "./Node";
+
 export interface CodeData {
+  language?: string;
   code: string;
 }
 
-export interface Code {
-  type: "code";
-  language: string;
-  data: CodeData;
-}
+export type CodeNode = GenericNode<"heading", CodeData>;

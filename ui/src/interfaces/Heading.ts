@@ -1,9 +1,11 @@
-import { Text } from "./Text";
+import { GenericNode } from "./Node";
+import { TextNode } from "./Text";
+import { ImageNode } from "./Image";
 
-export type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
+export interface HeadingData {
+  level?: 1 | 2 | 3 | 4 | 5 | 6;
+}
 
-export interface Heading {
-  type: "heading";
-  level?: HeadingLevel;
-  data: Text[];
+export interface HeadingNode extends GenericNode<"heading", HeadingData> {
+  nodes: (TextNode | ImageNode)[];
 }

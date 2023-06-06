@@ -1,10 +1,23 @@
-import { Code } from "./Code";
-import { Table } from "./Table";
-import { Checkbox } from "./Checkbox";
-import { Image } from "./Image";
-import { Paragraph } from "./Paragraph";
-import { Heading } from "./Heading";
+import { GenericNode } from "./Node";
+import { ImageNode } from "./Image";
+import { TableNode } from "./Table";
+import { ParagraphNode } from "./Paragraph";
+import { HeadingNode } from "./Heading";
+import { CheckboxNode } from "./Checkbox";
+import { CodeNode } from "./Code";
 
-export type Article = Array<
-  Heading | Table | Paragraph | Code | Checkbox | Image
->;
+export type ArticleNodes =
+  | ParagraphNode
+  | HeadingNode
+  | ImageNode
+  | TableNode
+  | CodeNode
+  | CheckboxNode;
+
+export interface ArticleData {
+  title: string;
+}
+
+export interface ArticleNode extends GenericNode<"article", ArticleData> {
+  nodes: ArticleNodes[];
+}

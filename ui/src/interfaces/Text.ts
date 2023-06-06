@@ -1,6 +1,8 @@
-export type MarksTypes = "bold" | "italic";
+import { GenericNode } from "./Node";
 
-export interface Text {
+export interface TextData {
   text: string;
-  marks?: Array<MarksTypes>;
+  marks?: ("bold" | "italic")[];
 }
+
+export type TextNode = GenericNode<"text", TextData>;

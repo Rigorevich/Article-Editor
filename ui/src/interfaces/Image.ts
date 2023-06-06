@@ -1,12 +1,9 @@
-export type Alignment = "center" | "left" | "right";
+import { GenericNode } from "./Node";
 
 export interface ImageData {
-  alignment: Alignment;
-  source: string;
+  alignment: "left" | "right" | "center";
+  src: string;
   caption: string;
 }
 
-export interface Image {
-  type: "image";
-  data: ImageData;
-}
+export type ImageNode = GenericNode<"image", ImageData>;

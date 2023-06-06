@@ -1,11 +1,12 @@
-import { Text } from "./Text";
+import { GenericNode } from "./Node";
 
-export interface CheckboxData {
-  option: Text;
+export interface CheckboxOptionData {
+  option: string;
   checked: boolean;
 }
 
-export interface Checkbox {
-  type: "checkbox";
-  data: CheckboxData[];
+export type CheckboxOptionNode = GenericNode<"option", CheckboxOptionData>;
+
+export interface CheckboxNode extends GenericNode<"checkbox", {}> {
+  nodes: CheckboxOptionNode[];
 }
