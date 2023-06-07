@@ -6,18 +6,19 @@ import { HeadingNode } from "./Heading";
 import { CheckboxNode } from "./Checkbox";
 import { CodeNode } from "./Code";
 
-export type ArticleNodes =
+export type ArticleNodes = (
   | ParagraphNode
   | HeadingNode
   | ImageNode
   | TableNode
   | CodeNode
-  | CheckboxNode;
+  | CheckboxNode
+)[];
 
 export interface ArticleData {
   title: string;
 }
 
 export interface ArticleNode extends GenericNode<"article", ArticleData> {
-  nodes: ArticleNodes[];
+  nodes: ArticleNodes;
 }

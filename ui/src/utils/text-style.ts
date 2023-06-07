@@ -1,15 +1,11 @@
-type textStyleProps = "normal" | "bold" | "italic" | "heading";
+type TextStyle = "bold" | "italic";
 
-export const textStyle = (variant: textStyleProps): string => {
+export const textStyle = (variant: TextStyle): string => {
   switch (variant) {
-    case "normal":
-      return "text-normal";
     case "bold":
       return "text-bold";
     case "italic":
       return "text-italic";
-    case "heading":
-      return "text-heading";
     default:
       return "";
   }

@@ -1,10 +1,10 @@
 import React from "react";
-import { Text as TextProps } from "../interfaces/Text";
+import { TextData } from "../interfaces/Text";
 
 export const getFormattedText = ({
   text,
   marks,
-}: TextProps): React.ReactNode => {
+}: TextData): React.ReactNode => {
   let formattedText: React.ReactNode = text;
 
   marks?.forEach((mark) => {

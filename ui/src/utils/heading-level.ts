@@ -1,6 +1,6 @@
-import { HeadingLevel } from "../interfaces/Heading";
+type HeadingLevels = 1 | 2 | 3 | 4 | 5 | 6;
 
-export const getHeadingTag = (level: HeadingLevel = 1) => {
+export const getHeadingTag = (level: HeadingLevels = 1) => {
   switch (level) {
     case 1:
       return "h1";

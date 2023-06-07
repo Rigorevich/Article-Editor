@@ -10,7 +10,7 @@ const Header: React.FC = () => {
           <li className={styled.nav_item}>
             <NavLink
               to="/"
-              className={({ isActive }) =>
+              className={({ isActive }: { isActive: boolean }): string =>
                 isActive ? styled.active_link : styled.nav_link
               }
             >
@@ -20,7 +20,7 @@ const Header: React.FC = () => {
           <li className={styled.nav_item}>
             <NavLink
               to="/create-article"
-              className={({ isActive }) =>
+              className={({ isActive }: { isActive: boolean }): string =>
                 isActive ? styled.active_link : styled.nav_link
               }
             >

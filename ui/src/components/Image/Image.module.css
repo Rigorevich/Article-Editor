@@ -1,11 +1,8 @@
-.wrapper {
-  padding: 10px 0;
-}
-
 .image {
+  display: inline-block;
   width: 400px;
-  margin-bottom: 10px;
-  border-radius: 10px;
+  margin: 0 10px 10px;
+  border-radius: 0.25rem;
 }
 
 .center-image {
@@ -22,4 +19,36 @@
 .right-image {
   float: right;
   margin-left: 10px;
+}
+
+.slider {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.prevButton,
+.nextButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.prevButton {
+  left: 10px;
+}
+
+.nextButton {
+  right: 10px;
+}
+
+.prevButton:hover,
+.nextButton:hover {
+  color: #ff0000;
 }

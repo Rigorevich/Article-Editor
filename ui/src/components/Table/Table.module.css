@@ -3,7 +3,10 @@
 }
 
 .table_name {
-  margin-bottom: 0.5rem;
+  font-size: 20px;
+  color: #3a3a3a;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
 }
 
 .table {

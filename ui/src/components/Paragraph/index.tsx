@@ -1,14 +1,28 @@
 import React from "react";
 import styled from "./Paragraph.module.css";
-import { Paragraph as ParagraphProps } from "../../interfaces/Paragraph";
-import { getFormattedText } from "../../utils/text-formatter";
 
-const Paragraph: React.FC<ParagraphProps> = ({ data }) => {
+import { ParagraphNode } from "../../interfaces/Paragraph";
+import { getFormattedText } from "../../utils/text-formatter";
+import RenderNodes from "../RenderNodes";
+
+type ParagraphProps = {
+  paragraph: ParagraphNode;
+};
+
+const Paragraph: React.FC<ParagraphProps> = ({ paragraph }) => {
+  // const sortedNodes = paragraph.nodes.sort((a, b) => {
+  //   if (a.type === "image" && b.type !== "image") {
+  //     return -1;
+  //   } else if (a.type !== "image" && b.type === "image") {
+  //     return 1;
+  //   } else {
+  //     return 0;
+  //   }
+  // });
+
   return (
     <p className={styled.paragraph}>
-      {data.map((item, index) => {
-        return <span key={item.text + index}>{getFormattedText(item)}</span>;
-      })}
+      <RenderNodes nodes={paragraph.nodes} />
     </p>
   );
 };

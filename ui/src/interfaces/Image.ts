@@ -1,7 +1,7 @@
 import { GenericNode } from "./Node";
 
 export interface ImageData {
-  alignment: "left" | "right" | "center";
+  alignment?: "left" | "right";
   src: string;
   caption: string;
 }

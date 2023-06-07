@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "./CreateArticle.module.css";
 import Container from "../../components/Container";
+import Button from "../../components/Button";
 
 export default function CreateArticle() {
   const [jsonValue, setJsonValue] = useState("");
@@ -14,6 +15,7 @@ export default function CreateArticle() {
 
     try {
       const parsedJson = JSON.parse(jsonValue);
+      setJsonValue("");
       console.log(parsedJson);
     } catch (error) {
       console.error("Ошибка парсинга JSON:", error);
@@ -30,9 +32,9 @@ export default function CreateArticle() {
             placeholder="Введите JSON структуру"
           />
         </div>
-        <button className={styled.submitButton} type="submit">
-          Отправить
-        </button>
+        <Button type="submit" primary>
+          Сохранить
+        </Button>
       </form>
     </Container>
   );

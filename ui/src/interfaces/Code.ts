@@ -5,4 +5,4 @@ export interface CodeData {
   code: string;
 }
 
-export type CodeNode = GenericNode<"heading", CodeData>;
+export type CodeNode = GenericNode<"code", CodeData>;

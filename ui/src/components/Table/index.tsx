@@ -1,31 +1,31 @@
 import React from "react";
 import styled from "./Table.module.css";
-import { getFormattedText } from "../../utils/text-formatter";
-import { Table as TableProps } from "../../interfaces/Table";
-import { TableRow as TableRowProps } from "../../interfaces/Table";
-import { Text as TableColProps } from "../../interfaces/Text";
 
-const TableCol: React.FC<TableColProps> = ({ text, marks }) => (
-  <div className={styled.table_cell}>{getFormattedText({ text, marks })}</div>
+import { TableNode, ColData } from "../../interfaces/Table";
+
+const TableCol: React.FC<{ value: string }> = ({ value }) => (
+  <div className={styled.table_cell}>{value}</div>
 );
 
-const TableRow: React.FC<TableRowProps> = ({ cols }) => {
+const TableRow: React.FC<{ cols: ColData[] }> = ({ cols }) => {
   return (
     <div className={styled.table_row}>
-      {cols.map(({ text, marks }, cellIndex) => (
-        <TableCol key={text + cellIndex} text={text} marks={marks} />
+      {cols.map(({ id, value }) => (
+        <TableCol key={id} value={value} />
       ))}
     </div>
   );
 };
 
-const Table: React.FC<TableProps> = ({ tableName, data }) => {
+const Table: React.FC<{ table: TableNode }> = ({ table }) => {
+  const { data } = table;
+
   return (
     <div className={styled.wrapper}>
-      <h4 className={styled.table_name}>{tableName}</h4>
+      <div className={styled.table_name}>{data?.tableName}</div>
       <div className={styled.table}>
-        {data.map((row, rowIndex) => (
-          <TableRow key={rowIndex} type={row.type} cols={row.cols} />
+        {data.rows.map(({ id, cols }) => (
+          <TableRow key={id} cols={cols} />
         ))}
       </div>
     </div>

@@ -1,33 +1,48 @@
 import React, { useState } from "react";
 import styled from "./Checkbox.module.css";
-import { getFormattedText } from "../../utils/text-formatter";
-import { Checkbox as CheckboxListProps } from "../../interfaces/Checkbox";
-import { CheckboxData as CheckboxItemProps } from "../../interfaces/Checkbox";
 
-const CheckboxItem: React.FC<CheckboxItemProps> = ({ option, checked }) => {
+import { CheckboxNode, OptionsData } from "../../interfaces/Checkbox";
+
+type CheckboxProps = {
+  checkbox: CheckboxNode;
+};
+
+type InputProps = {
+  checkbox: OptionsData;
+};
+
+const Input: React.FC<InputProps> = ({ checkbox }) => {
+  const { id, option, checked } = checkbox;
   const [checkedState, setCheckedState] = useState(checked);
-  const { text, marks } = option;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCheckedState(event.target.checked);
   };
 
   return (
-    <label>
-      <input type="checkbox" checked={checkedState} onChange={handleChange} />
-      {getFormattedText({ text, marks })}
+    <label key={id} className={styled.label}>
+      <input
+        className={styled.input}
+        type="checkbox"
+        checked={checkedState}
+        onChange={handleChange}
+      />
+      {option}
     </label>
   );
 };
 
-const CheckboxList: React.FC<CheckboxListProps> = ({ data }) => {
+const Checkbox: React.FC<CheckboxProps> = ({ checkbox }) => {
+  const { data } = checkbox;
+
   return (
-    <div className={styled.box}>
-      {data.map(({ option, checked }) => (
-        <CheckboxItem key={option.text} option={option} checked={checked} />
+    <div className={styled.wrapper}>
+      <div className={styled.checkbox__name}>{data.checkboxName}</div>
+      {data.options.map((option) => (
+        <Input key={option.id} checkbox={option} />
       ))}
     </div>
   );
 };
 
-export default CheckboxList;
+export default Checkbox;
