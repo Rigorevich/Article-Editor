@@ -15,7 +15,10 @@ const Article: React.FC<ArticleProps> = ({ article }) => {
     <div className={styled.article}>
       <h1 className={styled.article__title}>{data.title}</h1>
       <RenderNodes nodes={nodes} />
-      <Button secondary>Save</Button>
+      <div className={styled.buttons}>
+        <Button secondary>Save</Button>
+        <Button danger>Delete</Button>
+      </div>
     </div>
   );
 };

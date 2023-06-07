@@ -31,7 +31,7 @@
           {
             "id": "5",
             "type": "text",
-            "data": { "text": "жирный", "marks": ["bold"] }
+            "data": { "text": "жирный", "marks": ["bold", "italic"] }
           },
           {
             "id": "7",

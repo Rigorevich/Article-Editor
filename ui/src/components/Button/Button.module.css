@@ -34,3 +34,15 @@
 .primary:active {
   background-color: #0062cc;
 }
+
+.danger {
+  background-color: #dc3545;
+}
+
+.danger:hover {
+  background-color: #c82333;
+}
+
+.danger:active {
+  background-color: #bd2130;
+}

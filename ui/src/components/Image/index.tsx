@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "./Image.module.css";
-import classNames from "classnames";
 
 import { ImageNode } from "../../interfaces/Image";
-import { imageAlignment } from "../../utils/image-alignment";
 
 type ImageProps = {
   image: ImageNode;
