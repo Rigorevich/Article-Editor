@@ -3,7 +3,7 @@
 /dist
 
 # Зависимости
-/node_modules
+node_modules/
 
 # Файлы окружения
 .env
