@@ -1,0 +1,15 @@
+.error__message {
+  color: red;
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
