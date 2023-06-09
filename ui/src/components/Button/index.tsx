@@ -3,6 +3,7 @@ import styled from "./Button.module.css";
 
 type CommonButtonProps = {
   children: string;
+  onClick?: () => void;
   primary?: boolean;
   secondary?: boolean;
   disabled?: boolean;

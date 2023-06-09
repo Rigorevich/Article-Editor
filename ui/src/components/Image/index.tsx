@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "./Image.module.css";
 
-import { ImageNode } from "../../interfaces/Image";
+import { ImageNode } from "../../../../shared/interfaces/Image";
 
 type ImageProps = {
   image: ImageNode;
@@ -14,7 +14,11 @@ const Image: React.FC<ImageProps> = ({ image }) => {
       className={styled.image}
       src={src}
       alt={caption}
-      style={{ float: alignment }}
+      style={{
+        float: alignment,
+        marginRight: `${alignment && alignment === "left" ? "1rem" : "0"}`,
+        marginLeft: `${alignment && alignment === "right" ? "1rem" : "0"}`,
+      }}
     />
   );
 };

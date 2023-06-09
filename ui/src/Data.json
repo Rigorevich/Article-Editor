@@ -1,118 +1,115 @@
-[
-  {
-    "id": "0",
-    "type": "article",
-    "data": { "title": "Статья №1" },
-    "nodes": [
-      {
-        "id": "1",
-        "type": "heading",
-        "data": { "level": 1 },
-        "nodes": [
-          {
-            "id": "2",
-            "type": "text",
-            "data": {
-              "text": "Заголовок какой-то какой-то какой-то какой-то",
-              "marks": ["italic"]
-            }
+{
+  "type": "article",
+  "data": {
+    "title": "Статья №2"
+  },
+  "nodes": [
+    {
+      "type": "heading",
+      "data": {
+        "level": 2
+      },
+      "nodes": [
+        {
+          "type": "text",
+          "data": {
+            "text": "Какой-то заголовок"
           }
-        ]
-      },
-      {
-        "id": "3",
-        "type": "paragraph",
-        "nodes": [
-          {
-            "id": "4",
-            "type": "text",
-            "data": { "text": "Здесь " }
-          },
-          {
-            "id": "5",
-            "type": "text",
-            "data": { "text": "жирный", "marks": ["bold", "italic"] }
-          },
-          {
-            "id": "7",
-            "type": "image",
-            "data": {
-              "alignment": "left",
-              "src": "https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1295,h_720/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/hv2rcyth9819jozmybea/BangkokFloatCenter.jpg",
-              "caption": "caption"
-            }
-          },
-          {
-            "id": "6",
-            "type": "text",
-            "data": {
-              "text": " текст и картинка и бла-бла-бла бла-бла-бла бла-бла-бла заголовок какой-то какой-то какой-то какой-то"
-            }
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "nodes": [
+        {
+          "type": "image",
+          "data": {
+            "alignment": "left",
+            "src": "https://shapka-youtube.ru/wp-content/uploads/2022/11/ava-s-nadpisyu-abonent-nedostupen.jpg",
+            "caption": "Абонент не доступен"
           }
-        ]
-      },
-      {
-        "id": "8",
-        "type": "code",
-        "data": {
-          "language": "javascript",
-          "code": "function helloWorld() {\n  console.log('Hello, World!');\n}"
+        },
+        {
+          "type": "text",
+          "data": {
+            "text": "Здесь описание к "
+          }
+        },
+        {
+          "type": "text",
+          "data": {
+            "text": "картинке ",
+            "marks": ["bold", "italic"]
+          }
+        },
+        {
+          "type": "text",
+          "data": {
+            "text": "и тут смешная картинка."
+          }
         }
-      },
-      {
-        "id": "9",
-        "type": "checkbox",
-        "data": {
-          "checkboxName": "Какой-то опрос непонятный",
-          "options": [
-            {
-              "id": "10",
-              "option": "Ячейка 1",
-              "checked": true
-            },
-            {
-              "id": "11",
-              "option": "Ячейка 2",
-              "checked": false
-            }
-          ]
-        }
-      },
-      {
-        "id": "12",
-        "type": "table",
-        "data": {
-          "tableName": "Название таблицы",
-          "rows": [
-            {
-              "id": "13",
-              "cols": [
-                {
-                  "id": "14",
-                  "value": "Имя"
-                },
-                {
-                  "id": "15",
-                  "value": "Фамилия"
-                }
-              ]
-            },
-            {
-              "id": "16",
-              "cols": [
-                {
-                  "id": "17",
-                  "value": "Илья"
-                },
-                {
-                  "id": "18",
-                  "value": "Ригоревич"
-                }
-              ]
-            }
-          ]
-        }
+      ]
+    },
+    {
+      "type": "code",
+      "data": {
+        "language": "C++",
+        "code": "#include<iostream>\nusing namespace std;\n\nint main()\n{\nint a = 5, b = 10, temp;\n}"
       }
-    ]
-  }
-]
+    },
+    {
+      "type": "checkbox",
+      "data": {
+        "checkboxName": "Лучшие качества C++ разработчика",
+        "options": [
+          {
+            "option": "Лидерство",
+            "checked": true
+          },
+          {
+            "option": "Храбрость",
+            "checked": false
+          },
+          {
+            "option": "Отвага",
+            "checked": false
+          }
+        ]
+      }
+    },
+    {
+      "type": "table",
+      "data": {
+        "tableName": "tableName",
+        "rows": [
+          {
+            "cols": [
+              {
+                "value": "Имя"
+              },
+              {
+                "value": "Фамилия"
+              },
+              {
+                "value": "Отчество"
+              }
+            ]
+          },
+          {
+            "cols": [
+              {
+                "value": "Ригоревич"
+              },
+              {
+                "value": "Илья"
+              },
+              {
+                "value": "Александрович"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

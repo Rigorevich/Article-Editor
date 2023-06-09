@@ -1,7 +1,5 @@
 import React from "react";
-import styled from "./Text.module.css";
-
-import { TextNode } from "../../interfaces/Text";
+import { TextNode } from "../../../../shared/interfaces/Text";
 import { getFormattedText } from "../../utils/text-formatter";
 
 type TextProps = {

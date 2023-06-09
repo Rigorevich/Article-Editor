@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import styled from "./Checkbox.module.css";
 
-import { CheckboxNode, OptionsData } from "../../interfaces/Checkbox";
+import {
+  CheckboxNode,
+  OptionsData,
+} from "../../../../shared/interfaces/Checkbox";
 
 type CheckboxProps = {
   checkbox: CheckboxNode;

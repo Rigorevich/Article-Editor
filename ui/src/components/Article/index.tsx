@@ -3,22 +3,35 @@ import styled from "./Article.module.css";
 import Button from "../Button";
 import RenderNodes from "../RenderNodes";
 
-import { ArticleNode } from "../../interfaces/Article";
+import { Link, useLocation } from "react-router-dom";
+import { ArticleNode } from "../../../../shared/interfaces/Article";
 
 type ArticleProps = {
   article: ArticleNode;
+  handleDelete?: () => void;
 };
 
-const Article: React.FC<ArticleProps> = ({ article }) => {
+const Article: React.FC<ArticleProps> = ({ article, handleDelete }) => {
+  const { pathname } = useLocation();
   const { nodes, data } = article;
+
   return (
     <div className={styled.article}>
-      <h1 className={styled.article__title}>{data.title}</h1>
+      <h1 className={styled.article__title}>
+        {pathname === "/" ? (
+          <Link to={`/articles/${article.id}`}>{data.title}</Link>
+        ) : (
+          <>{data.title}</>
+        )}
+      </h1>
       <RenderNodes nodes={nodes} />
-      <div className={styled.buttons}>
-        <Button secondary>Save</Button>
-        <Button danger>Delete</Button>
-      </div>
+      {pathname !== "/" && (
+        <div className={styled.buttons}>
+          <Button danger onClick={handleDelete}>
+            Удалить
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

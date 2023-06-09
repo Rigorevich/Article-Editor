@@ -17,7 +17,17 @@
   margin-bottom: 1rem;
 }
 
+.article__title a {
+  color: #3a3a3a;
+  transition: color 0.2s ease-in-out;
+}
+
+.article__title a:hover {
+  color: #0070f3;
+}
+
 .buttons {
   display: flex;
   gap: 1rem;
+  margin-top: 1rem;
 }
