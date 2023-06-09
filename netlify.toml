@@ -1,0 +1,14 @@
+[build]
+  command = "yarn install && yarn build"
+
+[[plugins]]
+  package = "netlify-plugin-run"
+  [plugins.inputs]
+    dir = "./server"
+    command = "yarn install"
+
+[[plugins]]
+  package = "netlify-plugin-run"
+  [plugins.inputs]
+    dir = "./ui"
+    command = "yarn install"
