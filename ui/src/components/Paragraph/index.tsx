@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "./Paragraph.module.css";
 
-import { ParagraphNode } from "../../../../shared/interfaces/Paragraph";
+import { ParagraphNode } from "../../interfaces/Paragraph";
 import RenderNodes from "../RenderNodes";
 
 type ParagraphProps = {

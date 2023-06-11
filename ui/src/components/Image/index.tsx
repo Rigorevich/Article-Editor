@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "./Image.module.css";
 
-import { ImageNode } from "../../../../shared/interfaces/Image";
+import { ImageNode } from "../../interfaces/Image";
 
 type ImageProps = {
   image: ImageNode;

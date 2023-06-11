@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "./Table.module.css";
 
-import { TableNode, ColData } from "../../../../shared/interfaces/Table";
+import { TableNode, ColData } from "../../interfaces/Table";
 
 const TableCol: React.FC<{ value: string }> = ({ value }) => (
   <div className={styled.table_cell}>{value}</div>

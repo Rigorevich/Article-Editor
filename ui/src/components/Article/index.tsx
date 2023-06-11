@@ -4,7 +4,7 @@ import Button from "../Button";
 import RenderNodes from "../RenderNodes";
 
 import { Link, useLocation } from "react-router-dom";
-import { ArticleNode } from "../../../../shared/interfaces/Article";
+import { ArticleNode } from "../../interfaces/Article";
 
 type ArticleProps = {
   article: ArticleNode;

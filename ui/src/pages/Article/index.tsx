@@ -4,7 +4,7 @@ import styled from "./Article.module.css";
 
 import { TRPCError } from "@trpc/server";
 import { trpc } from "../../trpc";
-import { ArticleNode } from "../../../../shared/interfaces";
+import { ArticleNode } from "../../interfaces";
 import { useParams, useNavigate } from "react-router-dom";
 
 export default function ArticlePage() {

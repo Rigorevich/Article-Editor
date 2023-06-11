@@ -1,4 +1,4 @@
-import { ArticleNode } from "../../../shared/interfaces";
+import { ArticleNode } from "../interfaces";
 
 export const articles: ArticleNode[] = [
   {

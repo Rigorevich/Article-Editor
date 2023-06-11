@@ -2,7 +2,7 @@ import { router, publicProcedure } from "../trpc";
 import { articles } from "./db";
 import { TRPCError } from "@trpc/server";
 import { articleNodeSchema } from "./schemas";
-import { ArticleNode } from "../../../shared/interfaces";
+import { ArticleNode } from "../interfaces";
 
 const articleRouter = router({
   getArticles: publicProcedure.query(() => {
@@ -56,7 +56,7 @@ const articleRouter = router({
       if (index === -1) {
         throw new TRPCError({
           code: "NOT_FOUND",
-          message: `article with ID ${input} not found`,
+          message: `Article with ID ${input} not found`,
         });
       }
 

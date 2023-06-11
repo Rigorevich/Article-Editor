@@ -1,5 +1,5 @@
 import React from "react";
-import { TextData } from "../../../shared/interfaces/Text";
+import { TextData } from "../interfaces/Text";
 
 export const getFormattedText = ({
   text,

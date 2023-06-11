@@ -7,7 +7,7 @@ import Checkbox from "./Checkbox";
 import Table from "./Table";
 import Text from "./Text";
 
-import { Node } from "../../../shared/interfaces/Node";
+import { Node } from "../interfaces/Node";
 
 const RenderNodes: React.FC<{ nodes: Node[] }> = ({ nodes }) => {
   return (

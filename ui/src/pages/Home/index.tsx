@@ -3,7 +3,7 @@ import Article from "../../components/Article";
 import styled from "./Home.module.css";
 
 import { trpc } from "../../trpc";
-import { ArticleNode } from "../../../../shared/interfaces";
+import { ArticleNode } from "../../interfaces";
 
 export default function Home() {
   const { data, isLoading } = trpc.article.getArticles.useQuery() as {
