@@ -4,6 +4,7 @@ import createContext from "./context";
 import express from "express";
 import cors from "cors";
 
+const PORT = 4000;
 const app = express();
 
 app.use(cors());
@@ -15,8 +16,8 @@ app.use(
   })
 );
 
-app.listen(4000, () => {
-  console.log("Server running on port 4000");
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
 
 export type AppRouter = typeof appRouter;
