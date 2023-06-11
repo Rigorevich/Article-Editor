@@ -6,7 +6,7 @@ export const trpc = createTRPCReact<AppRouter>();
 export const trpcClient = trpc.createClient({
   links: [
     httpBatchLink({
-      url: "https://article-editor-api.vercel.app",
+      url: "https://article-editor-one.vercel.app/trpc",
     }),
   ],
 });
