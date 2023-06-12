@@ -1,6 +1,0 @@
-[build]
-  command = "yarn build"
-  publish = "client/build"
-
-[[plugins]]
-  package = "@netlify/plugin-functions-core"
