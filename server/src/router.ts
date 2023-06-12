@@ -1,5 +1,5 @@
 import { router } from "./trpc";
-import articleRouter from "./api/router";
+import articleRouter from "./articles/router";
 
 const appRouter = router({
   article: articleRouter,
