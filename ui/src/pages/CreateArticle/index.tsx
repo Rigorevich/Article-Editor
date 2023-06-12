@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import styled from "./CreateArticle.module.css";
 import Container from "../../components/Container";
 import Button from "../../components/Button";
-import data from "../../data.json";
 
+import { template } from "../../constants";
 import { trpc } from "../../trpc";
 
 export default function CreateArticle() {
-  const initialState = JSON.stringify(data, null, 2);
-  const [jsonValue, setJsonValue] = useState(initialState);
+  const [jsonValue, setJsonValue] = useState(template);
   const createUserMutation = trpc.article.createArticle.useMutation();
 
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -21,7 +20,7 @@ export default function CreateArticle() {
     try {
       const parsedJson = JSON.parse(jsonValue);
       createUserMutation.mutate(parsedJson);
-      setJsonValue(initialState);
+      setJsonValue(template);
       alert("Статья успешно создана");
     } catch (error) {
       console.error("Ошибка парсинга JSON:", error);
