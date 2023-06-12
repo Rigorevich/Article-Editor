@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "server",
-  "builds": [{ "src": "public/index.js", "use": "@vercel/node" }],
+  "name": "trpc-api",
+  "builds": [{ "src": "public/*.js", "use": "@vercel/node" }],
   "routes": [{ "src": "/(.*)", "dest": "/public/index.js" }]
 }
