@@ -6,7 +6,7 @@ export const trpc = createTRPCReact<AppRouter>();
 export const trpcClient = trpc.createClient({
   links: [
     httpBatchLink({
-      url: "http://localhost:4000/trpc",
+      url: "https://article-editor-2cuh0q69o-rigorevich.vercel.app/",
     }),
   ],
 });
