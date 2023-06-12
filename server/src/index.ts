@@ -8,6 +8,9 @@ const PORT = 4000;
 const app = express();
 
 app.use(cors());
+app.get("/", (_, res) => {
+  res.send("Path");
+});
 app.use(
   "/trpc",
   trpcExpress.createExpressMiddleware({
