@@ -8,6 +8,7 @@
   ],
   "license": "MIT",
   "scripts": {
+    "start": "turbo run start",
     "dev": "turbo run dev",
     "build": "turbo run build"
   },
