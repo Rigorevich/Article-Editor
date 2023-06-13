@@ -1,0 +1,19 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.checkbox__name {
+  font-size: 20px;
+  color: #3a3a3a;
+  font-weight: 500;
+}
+
+.label {
+  align-self: flex-start;
+}
+
+.input {
+  margin-right: 0.5rem;
+}
