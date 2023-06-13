@@ -6,7 +6,7 @@
     },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["build/**"]
+      "outputs": ["packages/web/build/**", "packages/api/build/**"]
     }
   }
 }
