@@ -1,0 +1,48 @@
+.button {
+  font-family: "Inter", sans-serif;
+  margin-top: 0.5rem;
+  align-self: flex-start;
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.secondary {
+  background-color: #6c757d;
+}
+
+.secondary:hover {
+  background-color: #545b62;
+}
+
+.secondary:active {
+  background-color: #495057;
+}
+
+.primary {
+  background-color: #007bff;
+}
+
+.primary:hover {
+  background-color: #0069d9;
+}
+
+.primary:active {
+  background-color: #0062cc;
+}
+
+.danger {
+  background-color: #dc3545;
+}
+
+.danger:hover {
+  background-color: #c82333;
+}
+
+.danger:active {
+  background-color: #bd2130;
+}
