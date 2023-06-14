@@ -1,4 +1,4 @@
-//"https://article-editor-cw4zgnl7w-rigorevich.vercel.app/trpc"
+//"https://article-editor-api.vercel.app/trpc"
 import { toast } from "react-toastify";
 
 export const toatifyNotification = (

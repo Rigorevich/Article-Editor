@@ -10,6 +10,7 @@ export default function Home() {
     {
       refetchOnMount: true,
       refetchOnReconnect: true,
+      refetchOnWindowFocus: false,
     }
   );
 

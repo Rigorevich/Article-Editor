@@ -4,20 +4,25 @@
   border-radius: 0.25rem;
 }
 
-.center-image {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+@media (max-width: 768px) {
+  .image {
+    width: 300px;
+  }
 }
 
-.left-image {
-  float: left;
-  margin-right: 10px;
+@media (max-width: 576px) {
+  .image {
+    width: 200px;
+  }
 }
 
-.right-image {
-  float: right;
-  margin-left: 10px;
+@media (max-width: 500px) {
+  .image {
+    display: block;
+    width: 220px;
+    float: none !important;
+    margin: 0 0 0.75rem 0 !important;
+  }
 }
 
 .slider {

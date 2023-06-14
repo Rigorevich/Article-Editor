@@ -10,18 +10,17 @@
 }
 
 .table {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   border: 1px solid #ccc;
   border-collapse: collapse;
 }
 
 .table_row {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
 .table_cell {
-  flex: 1;
   padding: 8px;
   border: 1px solid #ccc;
 }
