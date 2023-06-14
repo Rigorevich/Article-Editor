@@ -1,3 +1,25 @@
+//"https://article-editor-cw4zgnl7w-rigorevich.vercel.app/trpc"
+import { toast } from "react-toastify";
+
+export const toatifyNotification = (
+  type: "success" | "error",
+  message: string
+) => {
+  toast[type](message, {
+    position: "bottom-right",
+    autoClose: 5000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+};
+
+export const url =
+  "https://article-editor-cw4zgnl7w-rigorevich.vercel.app/trpc";
+
 export const template = {
   type: "article",
   data: {
