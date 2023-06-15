@@ -7,10 +7,12 @@ import { useParams, useNavigate } from "react-router-dom";
 
 export default function ArticlePage() {
   const { id } = useParams();
-  const navigate = useNavigate();
+  const { data, isLoading, error } = trpc.article.getArticleById.useQuery(id!, {
+    refetchOnWindowFocus: false,
+  });
 
-  const { data, isLoading, error } = trpc.article.getArticleById.useQuery(id!);
   const deleteArticle = trpc.article.deleteArticleById.useMutation();
+  const navigate = useNavigate();
 
   const handleDelete = () => {
     const confirm = window.confirm("Вы действительно хотите удалить статью?");

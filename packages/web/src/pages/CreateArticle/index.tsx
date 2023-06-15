@@ -21,6 +21,7 @@ export default function CreateArticle() {
 
     try {
       await mutation.mutateAsync(jsonValue);
+      setJsonValue(JSON.stringify(template, null, 2));
       toatifyNotification("success", "Статья успешно создана!");
     } catch (error) {
       toatifyNotification("error", "Ошибка! Подробности в консоле!");

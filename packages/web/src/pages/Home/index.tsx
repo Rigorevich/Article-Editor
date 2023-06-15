@@ -8,9 +8,8 @@ export default function Home() {
   const { data, isLoading, error } = trpc.article.getArticles.useQuery(
     undefined,
     {
-      refetchOnMount: true,
-      refetchOnReconnect: true,
       refetchOnWindowFocus: false,
+      refetchOnMount: true,
     }
   );
 
