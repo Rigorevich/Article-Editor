@@ -74,8 +74,7 @@ const articleRouter = router({
         });
       }
 
-      const deletedArticle = articles.splice(index, 1)[0];
-      return deletedArticle;
+      return articles.filter((item, itemIndex) => itemIndex !== index);
     }),
 });
 

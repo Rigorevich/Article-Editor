@@ -27,7 +27,7 @@ const Article: React.FC<ArticleProps> = ({ article, handleDelete }) => {
       <RenderNodes nodes={nodes} />
       {pathname !== "/" && (
         <div className={styled.buttons}>
-          <Button danger onClick={handleDelete}>
+          <Button secondary onClick={handleDelete}>
             Удалить
           </Button>
         </div>

@@ -13,36 +13,24 @@ type CommonButtonProps = {
 type PrimaryButtonProps = CommonButtonProps & {
   primary: boolean;
   secondary?: never;
-  danger?: never;
 };
 type SecondaryButtonProps = CommonButtonProps & {
   secondary: boolean;
   primary?: never;
-  danger?: never;
-};
-type DangerButtonProps = CommonButtonProps & {
-  danger: boolean;
-  secondary?: never;
-  primary?: never;
 };
 
-type ButtonProps =
-  | PrimaryButtonProps
-  | SecondaryButtonProps
-  | DangerButtonProps;
+export type ButtonProps = PrimaryButtonProps | SecondaryButtonProps;
 
 export default function Button({
   children,
   primary = false,
   secondary = false,
-  danger = false,
   disabled = false,
   ...otherProps
 }: ButtonProps) {
   const classes = classNames(styled.button, {
     [styled.primary]: primary,
     [styled.secondary]: secondary,
-    [styled.danger]: danger,
   });
 
   return (

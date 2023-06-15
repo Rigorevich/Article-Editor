@@ -11,16 +11,22 @@
   transition: background-color 0.2s ease-in-out;
 }
 
+.button[disabled] {
+  background-color: #888888;
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
 .secondary {
-  background-color: #6c757d;
+  background-color: #dc3545;
 }
 
 .secondary:hover {
-  background-color: #545b62;
+  background-color: #c82333;
 }
 
 .secondary:active {
-  background-color: #495057;
+  background-color: #bd2130;
 }
 
 .primary {
@@ -33,16 +39,4 @@
 
 .primary:active {
   background-color: #0062cc;
-}
-
-.danger {
-  background-color: #dc3545;
-}
-
-.danger:hover {
-  background-color: #c82333;
-}
-
-.danger:active {
-  background-color: #bd2130;
 }
