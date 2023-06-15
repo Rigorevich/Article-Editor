@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import styled from "./CreateArticle.module.css";
 import Container from "../../components/Container";
-import Button from "../../components/Button";
+import Form from "../../components/Form";
 
 import { template, toatifyNotification } from "../../constants";
 import { trpc } from "../../trpc";
@@ -9,7 +8,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function CreateArticle() {
-  const [jsonValue, setJsonValue] = useState(JSON.stringify(template, null, 2));
+  const initValue = JSON.stringify(template, null, 2);
+  const [jsonValue, setJsonValue] = useState(initValue);
   const mutation = trpc.article.createArticle.useMutation();
 
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -21,7 +21,7 @@ export default function CreateArticle() {
 
     try {
       await mutation.mutateAsync(jsonValue);
-      setJsonValue(JSON.stringify(template, null, 2));
+      setJsonValue(initValue);
       toatifyNotification("success", "Статья успешно создана!");
     } catch (error) {
       toatifyNotification("error", "Ошибка! Подробности в консоле!");
@@ -30,19 +30,11 @@ export default function CreateArticle() {
 
   return (
     <Container>
-      <form className={styled.form} onSubmit={handleFormSubmit}>
-        <div className={styled.textareaContainer}>
-          <textarea
-            className={styled.textarea}
-            value={jsonValue}
-            onChange={handleInputChange}
-            placeholder="Введите JSON структуру"
-          />
-        </div>
-        <Button type="submit" primary>
-          Сохранить
-        </Button>
-      </form>
+      <Form
+        jsonValue={jsonValue}
+        handleInputChange={handleInputChange}
+        handleFormSubmit={handleFormSubmit}
+      />
       <ToastContainer />
     </Container>
   );
