@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "./Heading.module.css";
 
-import { HeadingNode } from "../../interfaces/Heading";
+import { HeadingNode } from "../../interfaces";
 import { getHeadingTag } from "../../utils/heading-level";
 import RenderNodes from "../RenderNodes";
 
-type HeadingProps = {
+export type HeadingProps = {
   heading: HeadingNode;
 };
 
