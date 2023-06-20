@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "./Code.module.css";
 
-import { CodeNode } from "../../interfaces/Code";
+import { CodeNode } from "../../interfaces";
 
-type CodeProps = {
+export type CodeProps = {
   code: CodeNode;
 };
 
