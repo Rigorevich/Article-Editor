@@ -1,11 +1,10 @@
 import { TRPCError } from "@trpc/server";
-
 import { router, publicProcedure } from "../trpc";
-import { articles } from "./db";
 import { z } from "zod";
-
-import { articleNodeSchema } from "./schemas";
 import { ArticleNode } from "../interfaces";
+import { articleNodeSchema } from "./schemas";
+
+export let articles: ArticleNode[] = [] as ArticleNode[];
 
 const articleRouter = router({
   getArticles: publicProcedure.query(() => {
@@ -62,9 +61,7 @@ const articleRouter = router({
         message: `Invalid input: ${typeof val}`,
       });
     })
-    .mutation((req) => {
-      const { input } = req;
-
+    .mutation(({ input }) => {
       const index = articles.findIndex((article) => article.id === input);
 
       if (index === -1) {
@@ -74,7 +71,9 @@ const articleRouter = router({
         });
       }
 
-      return articles.filter((item, itemIndex) => itemIndex !== index);
+      articles = articles.filter((_, i) => i !== index);
+
+      return articles;
     }),
 });
 

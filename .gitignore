@@ -14,6 +14,7 @@ dist-ssr
 *.local
 .turbo/
 .storybook/
+storybook-static/
 
 
 # Editor directories and files

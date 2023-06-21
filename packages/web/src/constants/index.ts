@@ -17,7 +17,7 @@ export const toatifyNotification = (
   });
 };
 
-export const url = "https://article-editor-api.vercel.app/trpc";
+export const url = "http://localhost:4000/trpc";
 
 export const template = {
   type: "article",
