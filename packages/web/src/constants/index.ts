@@ -16,7 +16,7 @@ export const toatifyNotification = (type: 'success' | 'error', message: string) 
   });
 };
 
-export const url = 'http://localhost:4000/trpc';
+export const url = 'https://article-editor-api.vercel.app/trpc';
 
 export const template = {
   type: 'article',
