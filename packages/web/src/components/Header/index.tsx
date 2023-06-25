@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "./Header.module.css";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import styled from './Header.module.css';
+import { NavLink } from 'react-router-dom';
 
-const Header: React.FC = () => {
+const Header = () => {
   return (
     <header className={styled.header}>
       <nav className={styled.navbar}>

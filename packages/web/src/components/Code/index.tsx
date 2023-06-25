@@ -1,13 +1,13 @@
-import React from "react";
-import styled from "./Code.module.css";
+import React from 'react';
+import styled from './Code.module.css';
 
-import { CodeNode } from "../../interfaces";
+import { CodeNode } from '@monorepo/api/src/interfaces';
 
 export type CodeProps = {
   code: CodeNode;
 };
 
-const Code: React.FC<CodeProps> = ({ code }) => {
+const Code = ({ code }: CodeProps) => {
   const { data } = code;
   return (
     <div className={styled.wrapper}>

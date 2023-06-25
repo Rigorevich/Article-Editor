@@ -1,32 +1,32 @@
-import React from "react";
-import Heading from "./Heading";
-import Paragraph from "./Paragraph";
-import Image from "./Image";
-import Code from "./Code";
-import Checkbox from "./Checkbox";
-import Table from "./Table";
-import Text from "./Text";
+import React from 'react';
+import Heading from './Heading';
+import Paragraph from './Paragraph';
+import Image from './Image';
+import Code from './Code';
+import Checkbox from './Checkbox';
+import Table from './Table';
+import Text from './Text';
 
-import { Node } from "../interfaces/Node";
+import { Node } from '@monorepo/api/src/interfaces';
 
-const RenderNodes: React.FC<{ nodes: Node[] }> = ({ nodes }) => {
+const RenderNodes = ({ nodes }: { nodes: Node[] }) => {
   return (
     <>
       {nodes.map((node) => {
         switch (node.type) {
-          case "text":
+          case 'text':
             return <Text key={node.id} text={node} />;
-          case "heading":
+          case 'heading':
             return <Heading key={node.id} heading={node} />;
-          case "paragraph":
+          case 'paragraph':
             return <Paragraph key={node.id} paragraph={node} />;
-          case "image":
+          case 'image':
             return <Image key={node.id} image={node} />;
-          case "code":
+          case 'code':
             return <Code key={node.id} code={node} />;
-          case "checkbox":
+          case 'checkbox':
             return <Checkbox key={node.id} checkbox={node} />;
-          case "table":
+          case 'table':
             return <Table key={node.id} table={node} />;
           default:
             return null;

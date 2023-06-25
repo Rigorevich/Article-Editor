@@ -1,16 +1,14 @@
-import React, { useState } from "react";
-import Container from "../../components/Container";
-import Form from "../../components/Form";
+import React, { useState } from 'react';
+import Container from '../../components/Container';
+import Form from '../../components/Form';
 
-import { template, toatifyNotification } from "../../constants";
-import { trpc } from "../../trpc";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { useCreateArticleMutation } from '../../hooks/useCreateArticleMutation';
+import { template } from '../../constants';
 
 export default function CreateArticle() {
   const initValue = JSON.stringify(template, null, 2);
   const [jsonValue, setJsonValue] = useState(initValue);
-  const mutation = trpc.article.createArticle.useMutation();
+  const { createArticle } = useCreateArticleMutation();
 
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setJsonValue(event.target.value);
@@ -18,24 +16,13 @@ export default function CreateArticle() {
 
   const handleFormSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-
-    try {
-      await mutation.mutateAsync(jsonValue);
-      setJsonValue(initValue);
-      toatifyNotification("success", "Статья успешно создана!");
-    } catch (error) {
-      toatifyNotification("error", "Ошибка! Подробности в консоле!");
-    }
+    createArticle(jsonValue);
+    setJsonValue(initValue);
   };
 
   return (
     <Container>
-      <Form
-        jsonValue={jsonValue}
-        handleInputChange={handleInputChange}
-        handleFormSubmit={handleFormSubmit}
-      />
-      <ToastContainer />
+      <Form jsonValue={jsonValue} handleInputChange={handleInputChange} handleFormSubmit={handleFormSubmit} />
     </Container>
   );
 }

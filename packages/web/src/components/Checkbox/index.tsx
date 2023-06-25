@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import styled from "./Checkbox.module.css";
+import React, { useState } from 'react';
+import styled from './Checkbox.module.css';
 
-import { CheckboxNode, OptionsData } from "../../interfaces";
+import { CheckboxNode, OptionsData } from '@monorepo/api/src/interfaces';
 
 export type CheckboxProps = {
   checkbox: CheckboxNode;
 };
 
-type InputProps = {
+export type InputProps = {
   checkbox: OptionsData;
 };
 
-const Input: React.FC<InputProps> = ({ checkbox }) => {
+const Input = ({ checkbox }: InputProps) => {
   const { id, option, checked } = checkbox;
   const [checkedState, setCheckedState] = useState(checked);
 
@@ -21,18 +21,13 @@ const Input: React.FC<InputProps> = ({ checkbox }) => {
 
   return (
     <label key={id} className={styled.label}>
-      <input
-        className={styled.input}
-        type="checkbox"
-        checked={checkedState}
-        onChange={handleChange}
-      />
+      <input className={styled.input} type="checkbox" checked={checkedState} onChange={handleChange} />
       {option}
     </label>
   );
 };
 
-const Checkbox: React.FC<CheckboxProps> = ({ checkbox }) => {
+const Checkbox = ({ checkbox }: CheckboxProps) => {
   const { data } = checkbox;
 
   return (

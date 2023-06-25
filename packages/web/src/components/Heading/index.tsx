@@ -1,15 +1,15 @@
-import React from "react";
-import styled from "./Heading.module.css";
+import React from 'react';
+import styled from './Heading.module.css';
 
-import { HeadingNode } from "../../interfaces";
-import { getHeadingTag } from "../../utils/heading-level";
-import RenderNodes from "../RenderNodes";
+import { HeadingNode } from '@monorepo/api/src/interfaces';
+import { getHeadingTag } from '../../utils/heading-level';
+import RenderNodes from '../RenderNodes';
 
 export type HeadingProps = {
   heading: HeadingNode;
 };
 
-const Heading: React.FC<HeadingProps> = ({ heading }) => {
+const Heading = ({ heading }: HeadingProps) => {
   const { data, nodes } = heading;
   const Tag = getHeadingTag(data.level);
 
