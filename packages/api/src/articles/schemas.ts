@@ -1,22 +1,20 @@
-import { z } from "zod";
-import { v4 as uuidv4 } from "uuid";
+import { z } from 'zod';
+import { v4 as uuidv4 } from 'uuid';
 
 export const textNodeSchema = z.object({
   id: z.string().default(() => uuidv4()),
-  type: z.literal("text"),
+  type: z.literal('text'),
   data: z.object({
     text: z.string(),
-    marks: z
-      .array(z.union([z.literal("bold"), z.literal("italic")]))
-      .optional(),
+    marks: z.array(z.union([z.literal('bold'), z.literal('italic')])).optional(),
   }),
 });
 
 export const imageNodeSchema = z.object({
   id: z.string().default(() => uuidv4()),
-  type: z.literal("image"),
+  type: z.literal('image'),
   data: z.object({
-    alignment: z.union([z.literal("left"), z.literal("right")]).optional(),
+    alignment: z.union([z.literal('left'), z.literal('right')]).optional(),
     src: z.string().url(),
     caption: z.string(),
   }),
@@ -24,7 +22,7 @@ export const imageNodeSchema = z.object({
 
 export const tableNodeSchema = z.object({
   id: z.string().default(() => uuidv4()),
-  type: z.literal("table"),
+  type: z.literal('table'),
   data: z.object({
     tableName: z.string(),
     rows: z.array(
@@ -43,7 +41,7 @@ export const tableNodeSchema = z.object({
 
 export const codeNodeSchema = z.object({
   id: z.string().default(() => uuidv4()),
-  type: z.literal("code"),
+  type: z.literal('code'),
   data: z.object({
     language: z.string().optional(),
     code: z.string(),
@@ -52,7 +50,7 @@ export const codeNodeSchema = z.object({
 
 export const checkboxNodeSchema = z.object({
   id: z.string().default(() => uuidv4()),
-  type: z.literal("checkbox"),
+  type: z.literal('checkbox'),
   data: z.object({
     checkboxName: z.string().optional(),
     options: z.array(
@@ -67,13 +65,13 @@ export const checkboxNodeSchema = z.object({
 
 export const paragraphNodeSchema = z.object({
   id: z.string().default(() => uuidv4()),
-  type: z.literal("paragraph"),
+  type: z.literal('paragraph'),
   nodes: z.array(z.union([textNodeSchema, imageNodeSchema])),
 });
 
 export const headingNodeSchema = z.object({
   id: z.string().default(() => uuidv4()),
-  type: z.literal("heading"),
+  type: z.literal('heading'),
   data: z.object({
     level: z.number().min(1).max(6).optional(),
   }),
@@ -92,7 +90,7 @@ export const nodeSchema = z.union([
 
 export const articleNodeSchema = z.object({
   id: z.string().default(() => uuidv4()),
-  type: z.literal("article"),
+  type: z.literal('article'),
   data: z.object({
     title: z.string(),
   }),
