@@ -14,7 +14,7 @@ export default function ArticleList({ data }: { data: ArticleListProps }) {
       {data && data.articles && data.articles.length && data.articles.length ? (
         data.articles.map((article) => <Article key={article.id} article={article} />)
       ) : (
-        <span className={styles.notFound}>Нет статей</span>
+        <div className={styles.notFound}>Нет статей</div>
       )}
     </div>
   );

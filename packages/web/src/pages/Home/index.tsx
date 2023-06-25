@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <Container className={styled.container}>
       {isLoading ? <div className={styled.loading}>Загрузка...</div> : <ArticleList data={data} />}
-      {data && data.totalPages && (
+      {data && data?.totalPages > 0 && (
         <Pagination
           totalPages={data.totalPages}
           currentPage={currentPage}
