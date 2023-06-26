@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import Container from '../../components/Container';
 import ConfirmModal from '../../components/ConfirmModal';
 import Article from '../../components/Article';
@@ -16,13 +16,22 @@ export default function ArticlePage() {
 
   const navigate = useNavigate();
 
-  const handleConfirm = () => {
+  const handleConfirm = useCallback(() => {
     if (id) {
+      console.log(id);
       deleteArticle(id);
       navigate('/');
     }
     setIsConfirmModalOpen(false);
-  };
+  }, [id, deleteArticle, navigate]);
+
+  const handleCansel = useCallback(() => {
+    setIsConfirmModalOpen(false);
+  }, []);
+
+  const handleDelete = useCallback(() => {
+    setIsConfirmModalOpen(true);
+  }, []);
 
   if (error) {
     return <p className={styled.error__message}>{error.message}</p>;
@@ -33,13 +42,13 @@ export default function ArticlePage() {
       {isLoading ? (
         <div className={styled.loading}>Загрузка...</div>
       ) : (
-        <Article article={data} handleDelete={() => setIsConfirmModalOpen(true)} />
+        <Article article={data} handleDelete={handleDelete} />
       )}
       <ConfirmModal
         isOpen={isConfirmModalOpen}
         message="Удалить статью?"
         onConfirm={handleConfirm}
-        onCancel={() => setIsConfirmModalOpen(false)}
+        onCancel={handleCansel}
       />
     </Container>
   );

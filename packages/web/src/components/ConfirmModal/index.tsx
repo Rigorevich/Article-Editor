@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import Modal from 'react-modal';
 import styled from './ConfirmModal.module.css';
 import Button from '../Button';
@@ -26,4 +26,4 @@ const ConfirmModal = ({ isOpen, message, onConfirm, onCancel }: ModalProps) => {
   );
 };
 
-export default ConfirmModal;
+export default memo(ConfirmModal);

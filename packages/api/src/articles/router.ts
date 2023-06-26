@@ -3,12 +3,8 @@ import { router, publicProcedure } from '../trpc';
 import { z } from 'zod';
 import { ArticleNode } from '../interfaces';
 import { articleNodeSchema } from './schemas';
-import NodeCache from 'node-cache';
 
 export let articles: ArticleNode[] = [] as ArticleNode[];
-const cache = new NodeCache({
-  stdTTL: 60 * 60 * 24 * 7 * 1000,
-});
 
 export const articleRouter = router({
   getArticles: publicProcedure
@@ -20,26 +16,12 @@ export const articleRouter = router({
     )
     .query((opts) => {
       const { page, pageSize } = opts.input;
-      const cachedArticles = cache.get<ArticleNode[]>('articles');
 
-      if (cachedArticles) {
-        const totalItems = cachedArticles.length;
-        const totalPages = Math.ceil(totalItems / pageSize);
-        const startIndex = (page - 1) * pageSize;
-        const endIndex = startIndex + pageSize;
-        const articles = cachedArticles.slice(startIndex, endIndex);
-
-        return {
-          articles,
-          totalItems,
-          totalPages,
-        };
-      }
-
-      cache.set('articles', articles);
+      const startIndex = (page - 1) * pageSize;
+      const endIndex = startIndex + pageSize;
 
       return {
-        articles,
+        articles: articles.slice(startIndex, endIndex),
         totalItems: articles.length,
         totalPages: Math.ceil(articles.length / pageSize),
       };
@@ -56,11 +38,6 @@ export const articleRouter = router({
     .query((req) => {
       const { input } = req;
 
-      const cachedResult = cache.get<ArticleNode>(`article:${input}`);
-      if (cachedResult) {
-        return cachedResult;
-      }
-
       const article = articles.find((article) => article.id === input);
 
       if (!article) {
@@ -69,8 +46,6 @@ export const articleRouter = router({
           message: `Article with ID ${input} not found`,
         });
       }
-
-      cache.set(`article:${input}`, article);
 
       return article;
     }),
@@ -91,36 +66,21 @@ export const articleRouter = router({
     const article: ArticleNode = newArticle as ArticleNode;
     articles.push(article);
 
-    cache.set(`article:${article.id}`, article);
-    cache.del('articles');
-
     return article;
   }),
-  deleteArticleById: publicProcedure
-    .input((val: unknown) => {
-      if (typeof val === 'string') return val;
+  deleteArticleById: publicProcedure.input(z.string()).mutation((req) => {
+    const { input } = req;
+    const index = articles.findIndex((article) => article.id === input);
 
+    if (index === -1) {
       throw new TRPCError({
-        code: 'BAD_REQUEST',
-        message: `Invalid input: ${typeof val}`,
+        code: 'NOT_FOUND',
+        message: `Article with ID ${input} not found`,
       });
-    })
-    .mutation(({ input }) => {
-      const index = articles.findIndex((article) => article.id === input);
+    }
 
-      if (index === -1) {
-        throw new TRPCError({
-          code: 'NOT_FOUND',
-          message: `Article with ID ${input} not found`,
-        });
-      }
+    articles = articles.filter((_, i) => i !== index);
 
-      articles = articles.filter((_, i) => i !== index);
-
-      cache.del(`article:${input}`);
-
-      cache.del('articles');
-
-      return articles;
-    }),
+    return articles;
+  }),
 });

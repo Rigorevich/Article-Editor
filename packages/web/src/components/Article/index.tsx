@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from './Article.module.css';
 import Button from '../Button';
 import RenderNodes from '../RenderNodes';
