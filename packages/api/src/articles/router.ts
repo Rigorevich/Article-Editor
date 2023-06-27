@@ -3,8 +3,12 @@ import { router, publicProcedure } from '../trpc';
 import { z } from 'zod';
 import { ArticleNode } from '../interfaces';
 import { articleNodeSchema } from './schemas';
+import NodeCache from 'node-cache';
 
 export let articles: ArticleNode[] = [] as ArticleNode[];
+const cache = new NodeCache({
+  stdTTL: 60 * 60 * 24 * 7,
+});
 
 export const articleRouter = router({
   getArticles: publicProcedure
@@ -16,16 +20,27 @@ export const articleRouter = router({
     )
     .query((opts) => {
       const { page, pageSize } = opts.input;
+      const cacheKey = `articles:${page}:${pageSize}`;
+
+      const cachedResult = cache.get(cacheKey);
+      if (cachedResult) {
+        return cachedResult;
+      }
 
       const startIndex = (page - 1) * pageSize;
       const endIndex = startIndex + pageSize;
 
-      return {
+      const result = {
         articles: articles.slice(startIndex, endIndex),
         totalItems: articles.length,
         totalPages: Math.ceil(articles.length / pageSize),
       };
+
+      cache.set(cacheKey, result);
+
+      return result;
     }),
+
   getArticleById: publicProcedure
     .input((val: unknown) => {
       if (typeof val === 'string') return val;
@@ -37,6 +52,12 @@ export const articleRouter = router({
     })
     .query((req) => {
       const { input } = req;
+      const cacheKey = `article:${input}`;
+
+      const cachedResult = cache.get(cacheKey);
+      if (cachedResult) {
+        return cachedResult;
+      }
 
       const article = articles.find((article) => article.id === input);
 
@@ -47,8 +68,11 @@ export const articleRouter = router({
         });
       }
 
+      cache.set(cacheKey, article);
+
       return article;
     }),
+
   createArticle: publicProcedure.input(z.string()).mutation((req) => {
     const { input } = req;
     const parsedInput = JSON.parse(input);
@@ -66,8 +90,11 @@ export const articleRouter = router({
     const article: ArticleNode = newArticle as ArticleNode;
     articles.push(article);
 
+    cache.del('articles');
+
     return article;
   }),
+
   deleteArticleById: publicProcedure.input(z.string()).mutation((req) => {
     const { input } = req;
     const index = articles.findIndex((article) => article.id === input);
@@ -80,6 +107,9 @@ export const articleRouter = router({
     }
 
     articles = articles.filter((_, i) => i !== index);
+
+    cache.del(`article:${input}`);
+    cache.del('articles');
 
     return articles;
   }),
