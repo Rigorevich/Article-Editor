@@ -20,27 +20,25 @@ export const articleRouter = router({
     )
     .query((opts) => {
       const { page, pageSize } = opts.input;
-      const cacheKey = `articles:${page}:${pageSize}`;
-
-      const cachedResult = cache.get(cacheKey);
-      if (cachedResult) {
-        return cachedResult;
-      }
+      const cacheKey = 'articles';
 
       const startIndex = (page - 1) * pageSize;
       const endIndex = startIndex + pageSize;
 
-      const result = {
-        articles: articles.slice(startIndex, endIndex),
-        totalItems: articles.length,
-        totalPages: Math.ceil(articles.length / pageSize),
-      };
+      const cachedResult = cache.get<ArticleNode[]>(cacheKey);
 
-      cache.set(cacheKey, result);
-
-      return result;
+      return cachedResult
+        ? {
+            articles: cachedResult.slice(startIndex, endIndex),
+            totalItems: cachedResult.length,
+            totalPages: Math.ceil(cachedResult.length / pageSize),
+          }
+        : {
+            articles: articles.slice(startIndex, endIndex),
+            totalItems: articles.length,
+            totalPages: Math.ceil(articles.length / pageSize),
+          };
     }),
-
   getArticleById: publicProcedure
     .input((val: unknown) => {
       if (typeof val === 'string') return val;
@@ -52,9 +50,10 @@ export const articleRouter = router({
     })
     .query((req) => {
       const { input } = req;
-      const cacheKey = `article:${input}`;
+      const cacheKey = 'article';
 
-      const cachedResult = cache.get(cacheKey);
+      const cachedResult = cache.get<ArticleNode>(`${cacheKey}${input}`);
+
       if (cachedResult) {
         return cachedResult;
       }
@@ -68,11 +67,8 @@ export const articleRouter = router({
         });
       }
 
-      cache.set(cacheKey, article);
-
       return article;
     }),
-
   createArticle: publicProcedure.input(z.string()).mutation((req) => {
     const { input } = req;
     const parsedInput = JSON.parse(input);
@@ -90,11 +86,11 @@ export const articleRouter = router({
     const article: ArticleNode = newArticle as ArticleNode;
     articles.push(article);
 
-    cache.del('articles');
+    cache.set(`article${article.id}`, article);
+    cache.set(`articles`, articles);
 
     return article;
   }),
-
   deleteArticleById: publicProcedure.input(z.string()).mutation((req) => {
     const { input } = req;
     const index = articles.findIndex((article) => article.id === input);
@@ -108,8 +104,8 @@ export const articleRouter = router({
 
     articles = articles.filter((_, i) => i !== index);
 
-    cache.del(`article:${input}`);
-    cache.del('articles');
+    cache.del(`article${input}`);
+    cache.set('articles', articles);
 
     return articles;
   }),
