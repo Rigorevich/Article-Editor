@@ -1,4 +1,6 @@
 import styles from './Pagination.module.css';
+import classNames from 'classnames';
+import { useState, useEffect } from 'react';
 
 type PaginationProps = {
   totalPages: number;
@@ -7,6 +9,31 @@ type PaginationProps = {
 };
 
 export default function Pagination({ totalPages, currentPage, changePage }: PaginationProps) {
+  const [visiblePages, setVisiblePages] = useState<number[]>([]);
+
+  useEffect(() => {
+    updateVisiblePages(currentPage, totalPages);
+  }, [currentPage, totalPages]);
+
+  const updateVisiblePages = (currentPage: number, totalPages: number) => {
+    const maxVisibleButtons = 5;
+
+    let startPage = Math.max(currentPage - Math.floor(maxVisibleButtons / 2), 1);
+    let endPage = startPage + maxVisibleButtons - 1;
+
+    if (endPage > totalPages) {
+      endPage = totalPages;
+      startPage = Math.max(endPage - maxVisibleButtons + 1, 1);
+    }
+
+    const pages = [];
+    for (let i = startPage; i <= endPage; i++) {
+      pages.push(i);
+    }
+
+    setVisiblePages(pages);
+  };
+
   const handlePageChange = (page: number) => {
     if (page >= 1 && page <= totalPages) {
       changePage(page);
@@ -22,13 +49,13 @@ export default function Pagination({ totalPages, currentPage, changePage }: Pagi
       >
         Пред
       </button>
-      {Array.from({ length: totalPages }, (_, index) => (
+      {visiblePages.map((page) => (
         <button
-          key={index}
-          className={`${styles.paginationButton} ${currentPage === index + 1 ? styles.active : ''}`}
-          onClick={() => handlePageChange(index + 1)}
+          key={page}
+          className={classNames(styles.paginationButton, currentPage === page ? styles.active : '')}
+          onClick={() => handlePageChange(page)}
         >
-          {index + 1}
+          {page}
         </button>
       ))}
       <button
