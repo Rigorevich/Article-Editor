@@ -2,6 +2,7 @@ import styled from './Article.module.css';
 import Button from '../Button';
 import RenderNodes from '../RenderNodes';
 
+import { memo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ArticleNode } from '@monorepo/api/src/interfaces';
 
@@ -31,4 +32,4 @@ const Article = ({ article, handleDelete }: ArticleProps) => {
   );
 };
 
-export default Article;
+export default memo(Article);

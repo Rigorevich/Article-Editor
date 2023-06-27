@@ -16,7 +16,7 @@ export const useGetArticlesQuery = (paginationOpt: PaginationOpt) => {
   useEffect(() => {
     query.refetch();
     window.scrollTo({ top: 0, behavior: 'auto' });
-  }, [query, page, pageSize]);
+  }, [page, pageSize]);
 
   return query;
 };
