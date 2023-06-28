@@ -1,23 +1,4 @@
-//"https://article-editor-api.vercel.app/trpc"
-//"http://localhost:4000/trpc"
-import { toast } from 'react-toastify';
-
 export const PAGE_SIZE = 3;
-
-export const toatifyNotification = (type: 'success' | 'error', message: string) => {
-  toast[type](message, {
-    position: 'bottom-right',
-    autoClose: 4000,
-    hideProgressBar: true,
-    closeOnClick: true,
-    pauseOnHover: false,
-    draggable: true,
-    progress: undefined,
-    theme: 'light',
-  });
-};
-
-export const url = 'https://article-editor-api.vercel.app/trpc';
 
 export const template = {
   type: 'article',

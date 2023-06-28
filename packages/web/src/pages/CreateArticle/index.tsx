@@ -3,7 +3,7 @@ import Container from '../../components/Container';
 import Form from '../../components/Form';
 
 import { useCreateArticleMutation } from '../../hooks/useCreateArticleMutation';
-import { template } from '../../constants';
+import { template } from '../../utils/constants/template.constants';
 
 export default function CreateArticle() {
   const initValue = JSON.stringify(template, null, 2);

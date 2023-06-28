@@ -2,7 +2,7 @@ import React from 'react';
 import styled from './Heading.module.css';
 
 import { HeadingNode } from '@monorepo/api/src/interfaces';
-import { getHeadingTag } from '../../utils/heading-level';
+import { getHeadingTag } from '../../utils/helpers/heading-level.helpers';
 import RenderNodes from '../RenderNodes';
 
 export type HeadingProps = {

@@ -1,5 +1,5 @@
 import { trpc } from '../trpc';
-import { toatifyNotification } from '../constants';
+import { toatifyNotification } from '../utils/constants/toastify.constants';
 
 export const useCreateArticleMutation = () => {
   const mutation = trpc.article.createArticle.useMutation();

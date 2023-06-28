@@ -4,7 +4,7 @@ import Pagination from '../../components/Pagination';
 import styled from './Home.module.css';
 
 import { useState } from 'react';
-import { PAGE_SIZE } from '../../constants';
+import { PAGE_SIZE } from '../../utils/constants/template.constants';
 import { useGetArticlesQuery } from '../../hooks/useGetArticlesQuery';
 
 export default function Home() {
