@@ -41,7 +41,7 @@ export default function Pagination({ totalPages, currentPage, changePage }: Pagi
   };
 
   return (
-    <div className={styles.paginationContainer}>
+    <div className={styles.paginationContainer} data-test="pagination">
       <button
         className={styles.paginationButton}
         disabled={currentPage === 1}

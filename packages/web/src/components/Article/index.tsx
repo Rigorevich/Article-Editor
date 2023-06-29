@@ -15,7 +15,7 @@ const Article = ({ article, handleDelete }: ArticleProps) => {
   const { nodes, data } = article;
 
   return (
-    <div className={styled.article}>
+    <div className={styled.article} data-testid="article">
       <h1 className={styled.article__title}>
         {pathname === '/' ? <Link to={`/articles/${article.id}`}>{data.title}</Link> : <>{data.title}</>}
       </h1>

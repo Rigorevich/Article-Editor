@@ -41,7 +41,7 @@ export const articleRouter = router({
   getArticleById: publicProcedure.input(z.string()).query((req) => {
     const { input } = req;
 
-    const cachedData = cache.get(input);
+    const cachedData = cache.get(input) as ArticleNode;
     if (cachedData) {
       return cachedData;
     }
