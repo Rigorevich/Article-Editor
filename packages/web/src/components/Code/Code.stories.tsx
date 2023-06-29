@@ -1,15 +1,15 @@
-import Code from "./";
-import { Story, Meta } from "@storybook/react";
+import Code from './';
+import { Story, Meta } from '@storybook/react';
 
 export default {
-  title: "Components/Code",
+  title: 'Components/Code',
   component: Code,
   argTypes: {
     code: {
-      control: "text",
+      control: 'text',
     },
     language: {
-      control: "text",
+      control: 'text',
     },
   },
 } as Meta;
@@ -22,8 +22,8 @@ type TemplateProps = {
 const Template: Story<TemplateProps> = (args: TemplateProps) => (
   <Code
     code={{
-      id: "0",
-      type: "code",
+      id: '0',
+      type: 'code',
       data: {
         language: args.language,
         code: args.code,
@@ -34,12 +34,6 @@ const Template: Story<TemplateProps> = (args: TemplateProps) => (
 
 export const JavaScript = Template.bind({});
 JavaScript.args = {
-  language: "JavaScript",
+  language: 'JavaScript',
   code: 'console.log("Hello, World!");',
-};
-
-export const CSS = Template.bind({});
-CSS.args = {
-  language: "CSS",
-  code: "body { background-color: red; }",
 };

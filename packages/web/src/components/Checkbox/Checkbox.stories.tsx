@@ -1,9 +1,9 @@
-import React from "react";
-import { Story, Meta } from "@storybook/react";
-import Checkbox from "./";
+import React, { useState } from 'react';
+import { Story, Meta } from '@storybook/react';
+import Checkbox from './';
 
 export default {
-  title: "Components/Checkbox",
+  title: 'Components/Checkbox',
   component: Checkbox,
   argTypes: {
     checkbox: {
@@ -11,11 +11,14 @@ export default {
         disable: true,
       },
     },
-    checked: {
-      control: "boolean",
+    checkboxName: {
+      control: 'text',
     },
     option: {
-      control: "text",
+      control: 'text',
+    },
+    checked: {
+      control: 'boolean',
     },
   },
 } as Meta;
@@ -23,29 +26,39 @@ export default {
 type TemplateProps = {
   option: string;
   checked: boolean;
+  checkboxName: string;
 };
 
-const Template: Story<TemplateProps> = ({ option, checked }: TemplateProps) => (
-  <Checkbox
-    checkbox={{
-      id: "0",
-      type: "checkbox",
-      data: {
-        checkboxName: "Преимущества Storybook",
-        options: [{ id: "1", option, checked }],
-      },
-    }}
-  />
-);
+const Template: Story<TemplateProps> = ({ option, checked, checkboxName }: TemplateProps) => {
+  const [isChecked, setIsChecked] = useState(checked);
+
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newChecked = event.target.checked;
+    setIsChecked(newChecked);
+    Checked.args = {
+      ...Checked.args,
+      checked: newChecked,
+    };
+  };
+
+  return (
+    <Checkbox
+      checkbox={{
+        id: '0',
+        type: 'checkbox',
+        data: {
+          checkboxName,
+          options: [{ id: '1', option, checked: isChecked }],
+        },
+      }}
+      onChange={handleCheckboxChange}
+    />
+  );
+};
 
 export const Checked = Template.bind({});
 Checked.args = {
   checked: true,
-  option: "Checked",
-};
-
-export const Unchecked = Template.bind({});
-Unchecked.args = {
-  checked: false,
-  option: "Unchecked",
+  option: 'Checked',
+  checkboxName: 'Пример того, как выглядит чекбокс',
 };

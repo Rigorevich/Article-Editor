@@ -5,6 +5,7 @@ import { CheckboxNode, OptionsData } from '@monorepo/api/src/interfaces';
 
 export type CheckboxProps = {
   checkbox: CheckboxNode;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export type InputProps = {

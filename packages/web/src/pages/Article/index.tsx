@@ -18,7 +18,6 @@ export default function ArticlePage() {
 
   const handleConfirm = () => {
     if (id) {
-      console.log(id);
       deleteArticle(id);
       navigate('/');
     }
