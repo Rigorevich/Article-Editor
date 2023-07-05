@@ -5,32 +5,27 @@ import { ArticleNode } from '../interfaces';
 import { articleNodeSchema } from './schemas';
 import { LRU } from '../lru-cache';
 
-const cache = new LRU<ArticleNode | ArticleNode[]>(100);
+const cache = new LRU<ArticleNode>(100);
 let articles: ArticleNode[] = [] as ArticleNode[];
 
 export const articleRouter = router({
   getArticles: publicProcedure
     .input(
-      z.object({
-        page: z.number().positive(),
-        pageSize: z.number().positive(),
-      })
+      z
+        .object({
+          page: z.number().positive(),
+          pageSize: z.number().positive(),
+        })
+        .optional()
     )
     .query((opts) => {
+      if (!opts.input) return articles;
+
       const { page, pageSize } = opts.input;
       const key = `${page}-${pageSize}`;
 
       const startIndex = (page - 1) * pageSize;
       const endIndex = startIndex + pageSize;
-
-      const cachedData = cache.get(key) as ArticleNode[];
-      if (cachedData) {
-        return {
-          articles: cachedData.slice(startIndex, endIndex),
-          totalItems: cachedData.length,
-          totalPages: Math.ceil(cachedData.length / pageSize),
-        };
-      }
 
       return {
         articles: articles.slice(startIndex, endIndex),
@@ -41,7 +36,7 @@ export const articleRouter = router({
   getArticleById: publicProcedure.input(z.string()).query((req) => {
     const { input } = req;
 
-    const cachedData = cache.get(input) as ArticleNode;
+    const cachedData = cache.get(input);
     if (cachedData) {
       return cachedData;
     }
@@ -80,6 +75,7 @@ export const articleRouter = router({
   }),
   deleteArticleById: publicProcedure.input(z.string()).mutation((req) => {
     const { input } = req;
+
     const index = articles.findIndex((article) => article.id === input);
 
     if (index === -1) {
@@ -91,6 +87,7 @@ export const articleRouter = router({
 
     articles = articles.filter((_, i) => i !== index);
     cache.delete(input);
+    console.log(cache);
 
     return articles;
   }),
