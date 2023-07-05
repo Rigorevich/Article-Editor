@@ -6,7 +6,7 @@ import styled from './Article.module.css';
 import { useState } from 'react';
 import { useGetArticleByIdQuery } from '../../hooks/useGetArticleById';
 import { useDeleteArticleById } from '../../hooks/useDeleteArticleById';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 export default function ArticlePage() {
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
@@ -14,12 +14,9 @@ export default function ArticlePage() {
   const { data, isLoading, error } = useGetArticleByIdQuery(id!);
   const { deleteArticle } = useDeleteArticleById();
 
-  const navigate = useNavigate();
-
   const handleConfirm = () => {
     if (id) {
       deleteArticle(id);
-      navigate('/');
     }
     setIsConfirmModalOpen(false);
   };

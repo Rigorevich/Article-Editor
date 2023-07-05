@@ -118,6 +118,7 @@ const template = {
     },
   ],
 };
+const options = { page: 1, pageSize: 100 };
 
 describe('DeleteArticleById, CreateArticle', () => {
   it('Should create an article', async () => {
@@ -127,8 +128,8 @@ describe('DeleteArticleById, CreateArticle', () => {
     });
 
     const createdArticle = await caller.createArticle(JSON.stringify(template));
-    const allAticles = (await caller.getArticles()) as ArticleNode[];
-    const findedArticle = allAticles.find(({ id }) => id === createdArticle.id);
+    const allArticles = await caller.getArticles(options);
+    const findedArticle = allArticles.articles.find(({ id }) => id === createdArticle.id);
 
     expect(findedArticle).toBeDefined();
     expect(findedArticle).toStrictEqual(createdArticle);
@@ -221,10 +222,10 @@ describe('GetArticleById, GetArticles, Pagination', () => {
       res: express.response,
     });
 
-    const allArticles = (await caller.getArticles()) as ArticleNode[];
+    const allArticles = await caller.getArticles(options);
 
     expect(allArticles).toBeDefined();
-    expect(Array.isArray(allArticles)).toBe(true);
+    expect(Array.isArray(allArticles.articles)).toBe(true);
   });
 
   it('Pagination should be correct', async () => {
@@ -239,13 +240,9 @@ describe('GetArticleById, GetArticles, Pagination', () => {
       totalPages: number;
       articles: ArticleNode[];
     };
-    const allArticles = (await caller.getArticles()) as ArticleNode[];
 
     expect(articles).toBeDefined();
     expect(totalPages).toBeDefined();
     expect(totalItems).toBeDefined();
-    expect(allArticles).toBeDefined();
-
-    expect(totalItems).toBe(allArticles.length);
   });
 });

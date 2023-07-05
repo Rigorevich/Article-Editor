@@ -9,7 +9,8 @@ import { useGetArticlesQuery } from '../../hooks/useGetArticlesQuery';
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
-  const { data, isLoading, error } = useGetArticlesQuery({ page: currentPage, pageSize: PAGE_SIZE });
+  const [currentPageSize] = useState(PAGE_SIZE);
+  const { data, isLoading, error } = useGetArticlesQuery({ page: currentPage, pageSize: currentPageSize });
 
   if (error) {
     return <div className={styled.error__message}>Произошла ошибка при запросе!</div>;

@@ -11,16 +11,12 @@ let articles: ArticleNode[] = [] as ArticleNode[];
 export const articleRouter = router({
   getArticles: publicProcedure
     .input(
-      z
-        .object({
-          page: z.number().positive(),
-          pageSize: z.number().positive(),
-        })
-        .optional()
+      z.object({
+        page: z.number().positive(),
+        pageSize: z.number().positive(),
+      })
     )
     .query((opts) => {
-      if (!opts.input) return articles;
-
       const { page, pageSize } = opts.input;
       const key = `${page}-${pageSize}`;
 
