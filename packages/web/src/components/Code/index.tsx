@@ -10,7 +10,7 @@ export type CodeProps = {
 const Code = ({ code }: CodeProps) => {
   const { data } = code;
   return (
-    <div className={styled.wrapper}>
+    <div className={styled.wrapper} data-test="code">
       <div className={styled.language}>{data.language}</div>
       <pre className={styled.code}>
         <code>{data.code}</code>

@@ -15,17 +15,21 @@ const Article = ({ article, handleDelete }: ArticleProps) => {
   const { nodes, data } = article;
 
   return (
-    <div className={styled.article} data-testid="article">
-      <h1 className={styled.article__title}>
-        {pathname === '/' ? <Link to={`/articles/${article.id}`}>{data.title}</Link> : <>{data.title}</>}
+    <div className={styled.article} data-test="article">
+      <h1 className={styled.article__title} data-test="article-title">
+        {pathname === '/' ? (
+          <Link to={`/articles/${article.id}`} data-test="article-link">
+            {data.title}
+          </Link>
+        ) : (
+          <>{data.title}</>
+        )}
       </h1>
       <RenderNodes nodes={nodes} />
       {pathname !== '/' && (
-        <div className={styled.buttons}>
-          <Button secondary onClick={handleDelete}>
-            Удалить
-          </Button>
-        </div>
+        <Button secondary onClick={handleDelete}>
+          Удалить
+        </Button>
       )}
     </div>
   );

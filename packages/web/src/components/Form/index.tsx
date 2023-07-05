@@ -10,7 +10,7 @@ type FormProps = {
 
 const Form = ({ jsonValue, handleFormSubmit, handleInputChange }: FormProps) => {
   return (
-    <form className={styled.form} onSubmit={handleFormSubmit}>
+    <form className={styled.form} onSubmit={handleFormSubmit} data-test="form">
       <div className={styled.textareaContainer}>
         <textarea
           className={styled.textarea}

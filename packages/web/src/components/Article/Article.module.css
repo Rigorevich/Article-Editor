@@ -26,9 +26,3 @@
 .article__title a:hover {
   color: #0070f3;
 }
-
-.buttons {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-}

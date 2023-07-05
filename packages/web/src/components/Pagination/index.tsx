@@ -46,6 +46,7 @@ export default function Pagination({ totalPages, currentPage, changePage }: Pagi
         className={styles.paginationButton}
         disabled={currentPage === 1}
         onClick={() => handlePageChange(currentPage - 1)}
+        data-test="pagination-prev"
       >
         Пред
       </button>
@@ -54,6 +55,7 @@ export default function Pagination({ totalPages, currentPage, changePage }: Pagi
           key={page}
           className={classNames(styles.paginationButton, currentPage === page ? styles.active : '')}
           onClick={() => handlePageChange(page)}
+          data-test={currentPage === page ? 'current-page' : ''}
         >
           {page}
         </button>
@@ -62,6 +64,7 @@ export default function Pagination({ totalPages, currentPage, changePage }: Pagi
         className={styles.paginationButton}
         disabled={currentPage === totalPages}
         onClick={() => handlePageChange(currentPage + 1)}
+        data-test="pagination-next"
       >
         След
       </button>

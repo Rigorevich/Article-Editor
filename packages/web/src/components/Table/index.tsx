@@ -19,7 +19,7 @@ const Table = ({ table }: { table: TableNode }) => {
   const { data } = table;
 
   return (
-    <div className={styled.wrapper}>
+    <div className={styled.wrapper} data-test="table">
       <div className={styled.table_name}>{data?.tableName}</div>
       <div className={styled.table}>
         {data.rows.map(({ id, cols }) => (

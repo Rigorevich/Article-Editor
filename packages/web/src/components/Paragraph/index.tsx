@@ -20,7 +20,7 @@ const Paragraph = ({ paragraph }: ParagraphProps) => {
   });
 
   return (
-    <p className={styled.paragraph}>
+    <p className={styled.paragraph} data-test="paragraph">
       <RenderNodes nodes={sortedNodes} />
     </p>
   );

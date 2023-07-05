@@ -1,3 +1,4 @@
+import React from 'react';
 import Modal from 'react-modal';
 import styled from './ConfirmModal.module.css';
 import Button from '../Button';
@@ -14,10 +15,10 @@ const ConfirmModal = ({ isOpen, message, onConfirm, onCancel }: ModalProps) => {
     <Modal className={styled.modal} isOpen={isOpen}>
       <div className={styled.message}>{message}</div>
       <div className={styled.buttons}>
-        <Button secondary onClick={onConfirm}>
+        <Button secondary onClick={onConfirm} data-test="confirm">
           Удалить
         </Button>
-        <Button primary onClick={onCancel}>
+        <Button primary onClick={onCancel} data-test="cancel">
           Отмена
         </Button>
       </div>

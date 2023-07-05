@@ -4,10 +4,10 @@ import { NavLink } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <header className={styled.header}>
+    <header className={styled.header} data-test="header">
       <nav className={styled.navbar}>
         <ul className={styled.nav_list}>
-          <li className={styled.nav_item}>
+          <li className={styled.nav_item} data-test="home-link">
             <NavLink
               to="/"
               className={({ isActive }: { isActive: boolean }): string =>
@@ -17,7 +17,7 @@ const Header = () => {
               Главная
             </NavLink>
           </li>
-          <li className={styled.nav_item}>
+          <li className={styled.nav_item} data-test="create-link">
             <NavLink
               to="/create-article"
               className={({ isActive }: { isActive: boolean }): string =>

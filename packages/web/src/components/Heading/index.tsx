@@ -14,7 +14,7 @@ const Heading = ({ heading }: HeadingProps) => {
   const Tag = getHeadingTag(data.level);
 
   return (
-    <Tag className={styled.heading}>
+    <Tag className={styled.heading} data-test="heading">
       <RenderNodes nodes={nodes} />
     </Tag>
   );

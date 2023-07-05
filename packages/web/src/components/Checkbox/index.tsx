@@ -21,7 +21,7 @@ const Input = ({ checkbox }: InputProps) => {
   };
 
   return (
-    <label key={id} className={styled.label}>
+    <label key={id} className={styled.label} data-test="checkbox-item">
       <input className={styled.input} type="checkbox" checked={checkedState} onChange={handleChange} />
       {option}
     </label>
@@ -32,7 +32,7 @@ const Checkbox = ({ checkbox }: CheckboxProps) => {
   const { data } = checkbox;
 
   return (
-    <div className={styled.wrapper}>
+    <div className={styled.wrapper} data-test="checkbox">
       <div className={styled.checkbox__name}>{data.checkboxName}</div>
       {data.options.map((option) => (
         <Input key={option.id} checkbox={option} />

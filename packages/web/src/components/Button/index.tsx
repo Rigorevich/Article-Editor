@@ -1,5 +1,5 @@
-import classNames from "classnames";
-import styled from "./Button.module.css";
+import classNames from 'classnames';
+import styled from './Button.module.css';
 
 type CommonButtonProps = {
   children: string;
@@ -7,7 +7,7 @@ type CommonButtonProps = {
   primary?: boolean;
   secondary?: boolean;
   disabled?: boolean;
-  type?: "button" | "submit" | "reset" | undefined;
+  type?: 'button' | 'submit' | 'reset' | undefined;
 };
 
 type PrimaryButtonProps = CommonButtonProps & {
@@ -34,7 +34,7 @@ export default function Button({
   });
 
   return (
-    <button className={classes} disabled={disabled} {...otherProps}>
+    <button className={classes} disabled={disabled} {...otherProps} data-text="button">
       {children}
     </button>
   );

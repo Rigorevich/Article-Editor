@@ -11,6 +11,7 @@ const Image = ({ image }: ImageProps) => {
   const { src, caption, alignment } = image.data;
   return (
     <img
+      data-test="image"
       className={styled.image}
       src={src}
       alt={caption}
